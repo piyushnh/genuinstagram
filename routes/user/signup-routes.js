@@ -91,6 +91,7 @@ app.post('/user/signup', async (req, res) => {
           surname,
           email,
           password,
+          bio:'',
           joined: new Date().getTime(),
           email_verified: 'no',
           isOnline: 'yes',

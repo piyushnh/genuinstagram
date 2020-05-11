@@ -928,14 +928,14 @@ CREATE TABLE `users` (
   `joined` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `email_verified` enum('yes','no') COLLATE utf8mb4_bin NOT NULL DEFAULT 'no',
   `account_type` enum('public','private') COLLATE utf8mb4_bin NOT NULL DEFAULT 'public',
-  `instagram` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `twitter` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `facebook` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `github` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `website` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `instagram` varchar(500) COLLATE utf8mb4_bin NULL,
+  `twitter` varchar(500) COLLATE utf8mb4_bin NULL,
+  `facebook` varchar(500) COLLATE utf8mb4_bin NULL,
+  `github` varchar(500) COLLATE utf8mb4_bin NULL,
+  `website` varchar(500) COLLATE utf8mb4_bin NULL,
+  `phone` varchar(20) COLLATE utf8mb4_bin NULL,
   `isOnline` enum('yes','no') COLLATE utf8mb4_bin NOT NULL DEFAULT 'no',
-  `lastOnline` varchar(100) COLLATE utf8mb4_bin NOT NULL
+  `lastOnline` varchar(100) COLLATE utf8mb4_bin NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
