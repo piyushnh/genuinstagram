@@ -12,6 +12,10 @@ module.exports = {
   performance: {
     hints: false,
   },
+    devServer: {
+      contentBase: './dist',
+    hot: true,
+    },
   module: {
     rules: [
       {

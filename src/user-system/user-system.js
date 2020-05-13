@@ -94,6 +94,26 @@ new d('form.form_login').on('submit', e => {
   }
 })
 
+// On Google Login login
+new d('.google_login_button').on('click',  e => {
+  e.preventDefault()
+  console.log('dfd')
+  
+
+
+
+  let loginOpt = {
+    data: {},
+    when: 'login',
+    btn: '.google_login_button',
+    url: '/user/login',
+    redirect: '/',
+    defBtnValue: 'Login To Continue',
+  }
+    User.googleLogin(loginOpt)
+  
+})
+
 // QUICK LOGIN
 let allQL = Array.from(new d('.q_l_div').toAll())
 for (let elem of allQL) {

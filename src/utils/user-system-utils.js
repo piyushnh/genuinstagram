@@ -4,6 +4,8 @@ import d from './API/DOM'
 import { ObjectMssg } from './utils'
 import Action from './API/Action'
 
+
+
 /**
  * For username checker
  * @param {String} el
@@ -90,4 +92,52 @@ export const commonLogin = options => {
       button.blur()
     })
     .catch(e => console.log(e))
+}
+
+/**
+ * Function for login with google
+ *
+ * @param {Object} options Options
+ * @param {Object} options.data
+ * @param {String} options.btn
+ * @param {String} options.url
+ * @param {String} options.redirect
+ * @param {String} options.defBtnValue
+ */
+export const googleLogin = options => {
+  let { data, btn, url, redirect, defBtnValue } = options,
+    overlay2 = new d('.overlay-2'),
+    button = new d(btn),
+    action = new Action(btn)
+
+  action.start('Please wait..')
+
+  loginWithOAuth()
+    .then(s => {
+      let {mssg, success
+      } = s
+
+      console.log(s)
+
+      if (success) {
+        Notify({
+          value: mssg,
+          done: () => (location.href = redirect),
+        })
+
+        button.setValue('Redirecting..')
+        overlay2.show()
+      } else {
+        Notify({
+          value: ObjectMssg(mssg),
+        })
+
+        action.end(defBtnValue)
+      }
+
+      button.blur()
+    }).catch(e =>  Notify({
+          value: ObjectMssg(e.message),
+        })) 
+
 }

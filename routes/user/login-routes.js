@@ -6,6 +6,8 @@ const app = require('express').Router(),
   mw = require('../../config/Middlewares'),
   { uniqBy } = require('lodash')
 
+// import {loginWithOAuth} from '../../firebase/login' 
+
 // USER LOGIN GET ROUTE
 app.get('/login', mw.NotLoggedIn, (req, res) => {
   let options = {
@@ -62,6 +64,42 @@ app.post('/user/login', async (req, res) => {
     db.catchError(error, res)
   }
 })
+
+// // LOGS THE USER IN USING GOOGLE_OAUTH
+// app.post('/google_oauth/login', async (req, res) => {
+//   try {
+//     let {
+//       body: {},
+//       session,
+//     } = req
+
+    
+
+//     let errors = await req.getValidationResult()
+//     if (!errors.isEmpty()) {
+//       let array = []
+//       errors.array().forEach(e => array.push(e.msg))
+//       res.json({ mssg: array })
+//     } else {
+//       let {user : { user_id, username }} = await loginWithOAuth() 
+    
+//       session.id = user_id
+//       session.username = username
+//       session.email_verified = true
+//       session.isadmin = false
+
+//       // await db.query('UPDATE users SET isOnline=? WHERE id=?', ['yes', id])
+
+//       res.json({
+//         mssg: `Welcome ${rusername}!!`,
+//         success: true,
+//       })
+//         }
+      
+//   } catch (error) {
+//     db.catchError(error, res)
+//   }
+// })
 
 // LOGS USER OUT
 app.get('/logout', mw.LoggedIn, async (req, res) => {

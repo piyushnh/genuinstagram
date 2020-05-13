@@ -1,6 +1,6 @@
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import { GOOGLE_GEOLOCATION_KEY } from '../../env'
+import { GOOGLE_GEOLOCATION_KEY } from '../../.env'
 
 /**
  * Geolocation setup
