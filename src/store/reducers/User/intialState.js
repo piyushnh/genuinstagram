@@ -2,7 +2,7 @@ import { uData } from '../../../utils/utils'
 
 export default {
   session: {
-    id: Number(uData('session')),
+    id: uData('session'),
     username: uData('username'),
   },
   user_details: {
@@ -26,4 +26,9 @@ export default {
   },
   tags: [],
   mutualUsers: [],
+  auth_details: {
+    tokenId: '',
+    authed: false
+
+  }
 }

@@ -7,6 +7,9 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
 // reducers
 import User from './reducers/User/User'
 import Follow from './reducers/Follow/Follow'
@@ -18,7 +21,7 @@ import Message from './reducers/Message/Message'
 import Setting from './reducers/Setting/Setting'
 import Hashtag from './reducers/Hashtag/hashtag'
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   User,
   Follow,
   Notification,
@@ -30,10 +33,19 @@ const reducers = combineReducers({
   Hashtag,
 })
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 const middlwares = applyMiddleware(thunk, logger)
 
-export default createStore(
-  reducers,
+export default store = createStore(
+  persistReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   middlwares
 )
+
+export let persistor = persistStore(store)

@@ -8,13 +8,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import {persistor} from './store/store'
+import Loading from './components/others/loading'
 import App from './components/App'
+
+import './django-api/socialEngine'
 
 let element = document.getElementById('root')
 if (element) {
   ReactDOM.render(
     <Provider store={store}>
+    <PersistGate loading={<Loading />} persistor={persistor}>
       <App />
+    </PersistGate>
     </Provider>,
     element
   )
