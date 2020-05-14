@@ -34,20 +34,40 @@ Note: Many improvements were done after recording this video.
     yarn
     ```
 
-3. Open PHPMyAdmin, create a DB & import `db.sql` file.
-4. Create a `.env` file and insert the following code. Replace values with yours!!
+3. Open Terminal and do the following:
+   ```bash
+   mysql -u root -p
+   #enter password then
+   
+   #create new username and password
+   GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+   
+   #type \q and logout from root
+   
+   #login with username and password you created
+   mysql -u username -p
+   
+   CREATE DATABASE genuinstagram;
+   
+   USE genuinstagram;
+   
+   #opne this repo's folder in terminal and do
+   mysql -u username -p genuinstagram < db.sql
+   
+   
 
+4. Create a `.env` file in the the folder and insert the following code. Replace values with yours
     ```javascript
-    PORT=YOUR_PORT
-    SESSION_SECRET_LETTER="anything-secret"
-    MYSQL_HOST="host"
-    MYSQL_USER="user"
+    PORT=3000
+    SESSION_SECRET_LETTER="anything-secret (put some loong string here)"
+    MYSQL_HOST="localhost"
+    MYSQL_USER="username"
     MYSQL_PASSWORD="password"
-    MYSQL_DATABASE="db"
-    MAIL="your-email-for-sending email-verification-link"
-    MAIL_PASSWORD="password-for-email"
-    GOOGLE_GEOLOCATION_KEY='google-geolocation-key'
-    ADMIN_PASSWORD='password-for-admin'
+    MYSQL_DATABASE="genuinstagram"
+    MAIL="your-email-for-sending email-verification-link" (ignore)
+    MAIL_PASSWORD="password-for-email" (ignore)
+    GOOGLE_GEOLOCATION_KEY='google-geolocation-key' (ignore)
+    ADMIN_PASSWORD='password-for-admin' (ignore)
     ```
     
 5. For front-end layer of this app to get access to `env` variables defined in `.env` file, run
