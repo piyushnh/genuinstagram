@@ -4,6 +4,7 @@ export default {
   session: {
     id: uData('session'),
     username: uData('username'),
+    
   },
   user_details: {
     id: null,
@@ -27,8 +28,8 @@ export default {
   tags: [],
   mutualUsers: [],
   auth_details: {
-    tokenId: '',
-    authed: false
+    tokenId: uData('token'),
+    authed: uData('loggedIn')
 
   }
 }

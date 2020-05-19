@@ -4,7 +4,10 @@ import d from './API/DOM'
 import { ObjectMssg } from './utils'
 import Action from './API/Action'
 
+import { SocialProviderTypes } from '../django-api/socialProviderTypes'
+import { provider } from '../django-api/socialEngine'
 
+const authorizeService = provider.get(SocialProviderTypes.AuthorizeService)
 
 /**
  * For username checker
@@ -80,6 +83,8 @@ export const commonLogin = options => {
         })
 
         button.setValue('Redirecting..')
+
+      
         overlay2.show()
       } else {
         Notify({
@@ -110,14 +115,13 @@ export const googleLogin = options => {
     button = new d(btn),
     action = new Action(btn)
 
-  action.start('Please wait..')
+  // action.start('Please wait..')
 
-  loginWithOAuth()
-    .then(s => {
-      let {mssg, success
-      } = s
+  authorizeService.loginWithOAuth()
+    .then(result => {
+      let {data, success, mssg
+      } = result
 
-      console.log(s)
 
       if (success) {
         Notify({
@@ -125,8 +129,27 @@ export const googleLogin = options => {
           done: () => (location.href = redirect),
         })
 
-        button.setValue('Redirecting..')
+        // button.setValue('Processing..')
+
+        post(url, data)
+        .then(result => {
+          let {
+           data: { mssg, success}
+          } = result
+
+           if (success) {
+        Notify({
+          value: 'Welcome!',
+          done: () => (location.href = redirect),
+        })
+
+        // button.setValue('Redirecting..')
+
         overlay2.show()
+      
+      }
+        } )
+
       } else {
         Notify({
           value: ObjectMssg(mssg),
@@ -136,8 +159,10 @@ export const googleLogin = options => {
       }
 
       button.blur()
-    }).catch(e =>  Notify({
+    }).catch(e => { Notify({
           value: ObjectMssg(e.message),
-        })) 
+        })
+        console.error(error)
+    }) 
 
 }

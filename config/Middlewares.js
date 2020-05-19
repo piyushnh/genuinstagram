@@ -4,6 +4,7 @@
 const variables = (req, res, next) => {
   let loggedIn = req.session.id ? true : false
   res.locals.loggedIn = loggedIn
+  // console.log(req.session)
   res.locals.session = req.session
   next()
 }

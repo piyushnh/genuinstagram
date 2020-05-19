@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "target": "es5",
+    "lib": [
+      "es6"
+    ],
+    "types": [
+      "reflect-metadata"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
     "experimentalDecorators": true,
-    "allowJs": true
+    "emitDecoratorMetadata": true
   }
 }

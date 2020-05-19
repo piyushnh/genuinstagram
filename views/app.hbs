@@ -1,17 +1,11 @@
 {{> topHeader }}
 
-<div
-  class="data"
-  id="data"
-  data-session="{{session.id}}"
-  data-username="{{session.username}}"
-  data-email-verified="{{session.email_verified}}"
-  data-loggedin="{{loggedIn}}"
-  data-isadmin="{{session.isadmin}}"
-></div>
+<div aria-hidden="true" class="data" id="data" data-session="{session.id}}" data-token="{{session.tokenId}}"
+  data-username="{{session.username}}" data-email-verified="{{session.email_verified}}" data-loggedin="{{loggedIn}}"
+  data-isadmin="{{session.isadmin}}"></div>
 
 <div id="root">
-  <div class='preload' >
+  <div class='preload'>
     <div class="preload_spinner">
       <div class="spinner">
         <span></span>

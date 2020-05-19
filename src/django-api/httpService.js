@@ -117,7 +117,7 @@ export class HttpService {
         return await axios
             .post(`${config.settings.api}${validURL}`, payload)
             .then((result) => {
-                return result.data
+                return result
             })
             .catch((error) => {
                 if (error.response) {

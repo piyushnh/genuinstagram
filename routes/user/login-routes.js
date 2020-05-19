@@ -65,41 +65,50 @@ app.post('/user/login', async (req, res) => {
   }
 })
 
-// // LOGS THE USER IN USING GOOGLE_OAUTH
-// app.post('/google_oauth/login', async (req, res) => {
-//   try {
-//     let {
-//       body: {},
-//       session,
-//     } = req
+// LOGS THE USER IN USING GOOGLE_OAUTH
+app.post('/google_oauth/login', async (req, res) => {
+  try {
+    let {
+      body: {token: token, user: user},
+      session,
+    } = req
+
+    console.log(session)
 
     
 
-//     let errors = await req.getValidationResult()
-//     if (!errors.isEmpty()) {
-//       let array = []
-//       errors.array().forEach(e => array.push(e.msg))
-//       res.json({ mssg: array })
-//     } else {
-//       let {user : { user_id, username }} = await loginWithOAuth() 
+    let errors = await req.getValidationResult()
+    if (!errors.isEmpty()) {
+      let array = []
+      errors.array().forEach(e => array.push(e.msg))
+      res.json({ mssg: array })
+    } else {
+      let  { user_id, username } = user
+
+      console.log(token)
     
-//       session.id = user_id
-//       session.username = username
-//       session.email_verified = true
-//       session.isadmin = false
+      session.id = user_id
+      session.tokenId = token
+      session.username = username
+      session.email_verified = true
+      session.isadmin = false
 
-//       // await db.query('UPDATE users SET isOnline=? WHERE id=?', ['yes', id])
+      // console.log(session)
 
-//       res.json({
-//         mssg: `Welcome ${rusername}!!`,
-//         success: true,
-//       })
-//         }
+      // await db.query('UPDATE users SET isOnline=? WHERE id=?', ['yes', id])
+
+      res.json({
+        success: true,
+      })
+        }
       
-//   } catch (error) {
-//     db.catchError(error, res)
-//   }
-// })
+  } catch (error) {
+    res.json({
+        success: false,
+        mssg: error.message
+      })
+  }
+})
 
 // LOGS USER OUT
 app.get('/logout', mw.LoggedIn, async (req, res) => {

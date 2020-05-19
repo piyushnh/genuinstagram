@@ -106,9 +106,9 @@ new d('.google_login_button').on('click',  e => {
     data: {},
     when: 'login',
     btn: '.google_login_button',
-    url: '/user/login',
+    url: '/google_oauth/login',
     redirect: '/',
-    defBtnValue: 'Login To Continue',
+    defBtnValue: 'Login with Google',
   }
     User.googleLogin(loginOpt)
   

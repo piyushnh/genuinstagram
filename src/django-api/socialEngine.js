@@ -3,6 +3,7 @@
 import { useDjangoClient } from './dependecyRegisterar'
 import { Container } from 'inversify'
 
+
 const getRandomColor = () => {
   let letters = '0123456789ABCDEF'
   let color = '#'

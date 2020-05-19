@@ -20,6 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -37,6 +38,7 @@ module.exports = {
         loaders: ['style-loader', 'css-loader'],
         exclude: /node_modules/,
       },
+      { test: /\.ts$/, use: 'ts-loader' },
     ],
   },
   plugins: [
