@@ -9,6 +9,7 @@ import logger from 'redux-logger'
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import createEncryptor from 'redux-persist-transform-encrypt'
 
 // reducers
 import User from './reducers/User/User'
@@ -33,9 +34,17 @@ const rootReducer = combineReducers({
   Hashtag,
 })
 
+const encryptor = createEncryptor({
+  secretKey: 'helloiusnci',
+  onError: function(error) {
+    // Handle the error.
+  }
+})
+
 const persistConfig = {
   key: 'root',
   storage,
+  transforms: [encryptor]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

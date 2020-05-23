@@ -12,13 +12,13 @@ import { getUnreadMessages } from '../actions/message'
 import Header from './others/header/header'
 import NotiSpeak from './others/noti-speak'
 import SideBar from './others/sidebar/sidebar'
-import AppRoutes from './App-routes'
+import AppRoutes from '../routes/MainRoutes'
 
 class App extends Component {
   componentDidMount = () => {
     let { dispatch } = this.props
-    dispatch(getUnreadNotifications())
-    dispatch(getUnreadMessages())
+    // dispatch(getUnreadNotifications())
+    // dispatch(getUnreadMessages())
   }
 
   render() {
@@ -29,7 +29,7 @@ class App extends Component {
         <div className="app">
           <Header />
           <NotiSpeak un={unreadNotifications} />
-          <SideBar un={unreadNotifications} uc={unreadMessages} />
+          {/*<SideBar un={unreadNotifications} uc={unreadMessages} />*/}
           <AppRoutes />
         </div>
       </Router>

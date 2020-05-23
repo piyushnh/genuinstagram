@@ -27,9 +27,9 @@ export default {
   },
   tags: [],
   mutualUsers: [],
-  auth_details: {
-    tokenId: uData('token'),
-    authed: uData('loggedIn')
+  authentication: {
+    isLoggedin: false,
+    authToken: ''
 
   }
 }

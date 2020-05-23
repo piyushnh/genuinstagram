@@ -35,6 +35,11 @@ app.get('/about', (req, res) => {
 })
 
 // ROUTE FOR LOGGED IN USER [REACT IS RENDERED BY THIS ROUTE]
+app.get('/react-login', mw.NotLoggedIn, (req, res) => {
+  let options = { title: '📸' }
+  res.render('app', { options })
+})
+// ROUTE FOR LOGGED IN USER [REACT IS RENDERED BY THIS ROUTE]
 app.get('*', mw.LoggedIn, (req, res) => {
   let options = { title: '📸' }
   res.render('app', { options })
