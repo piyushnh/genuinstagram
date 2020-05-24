@@ -54,8 +54,8 @@ const Sidebar = props => {
 			icon: <HomeIcon />
 		},
 		{
-			title: "Food Court",
-			href: "/nearbyfoodcourts/",
+			title: "Notifications",
+			href: "/notifications",
 			icon: <FastfoodIcon />
 		},
 		{

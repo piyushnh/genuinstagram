@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
-import { Main as MainLayout, Minimal as MinimalLayout } from "./layouts";
+import { Main as MainLayout, Minimal as MinimalLayout } from "../components/layouts";
 import RouteWithLayout from "./RouteWithLayout";
 
 
@@ -11,13 +11,16 @@ export class PrivateRoute extends Component{
   render () {
     const {authed, path, component: Component, layout: Layout} = this.props
     return (
-    <Route  path={path} 
+    <Route  path={path} exact
     
-    render={() => (
-				<Layout>
+    render={() => {
+      return authed ?
+				(<Layout>
 					<Component />
-				</Layout>
-			)}
+				</Layout>)
+        :
+        <Redirect to='/react-login' />
+    }}
     />
 
     )

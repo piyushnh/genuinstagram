@@ -29,7 +29,7 @@ class App extends Component {
         <div className="app">
           <Header />
           <NotiSpeak un={unreadNotifications} />
-          {/*<SideBar un={unreadNotifications} uc={unreadMessages} />*/}
+          <SideBar un={unreadNotifications} uc={unreadMessages} />
           <AppRoutes />
         </div>
       </Router>

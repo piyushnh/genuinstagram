@@ -26,7 +26,7 @@ import AdminLogin from '../components/admin/admin-login'
 import IsAdmin from '../components/admin/is-admin'
 import Error from '../components/error/error'
 import Login from '../components/authentication/login'
-import { Main as MainLayout, Minimal as MinimalLayout } from "./layouts";
+import { Main as MainLayout, Minimal as MinimalLayout } from "../components/layouts";
 
 
 

@@ -40,11 +40,12 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const CustomRouterLink = forwardRef((props, ref) => (
-	<div ref={ref} style={{ flexGrow: 1 }}>
+const CustomRouterLink = forwardRef((props, ref) => {
+	console.log(props)
+	return (<div ref={ref} style={{ flexGrow: 1 }}>
 		<RouterLink {...props} />
-	</div>
-));
+	</div>)
+});
 
 const SidebarNav = props => {
 	const { pages, className, ...rest } = props;
@@ -55,7 +56,10 @@ const SidebarNav = props => {
 		<List {...rest} className={clsx(classes.root, className)}>
 			{pages.map(page => (
 				<ListItem className={classes.item} disableGutters key={page.title}>
-					<Button
+					<RouterLink to={page.href} >
+							{page.title}
+					</RouterLink>
+					{/*<Button
 						activeClassName={classes.active}
 						className={classes.button}
 						component={CustomRouterLink}
@@ -63,7 +67,7 @@ const SidebarNav = props => {
 					>
 						<div className={classes.icon}>{page.icon}</div>
 						{page.title}
-					</Button>
+					</Button>*/}
 				</ListItem>
 			))}
 		</List>
