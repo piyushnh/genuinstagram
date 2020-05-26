@@ -6,14 +6,16 @@ import { Route, Redirect } from 'react-router-dom'
 export class PublicRoute extends Component {
 
   render () {
-    const {authed, path, component} = this.props
+    const {authed, path, component: Component} = this.props
     return (
-    <Route path={path} render={() => {
-      return (
-          authed
-            ? <Redirect to='/' />
-            : (() => component)()
-      )
+    <Route path={path}     render={() => {
+      return authed ?
+        <Redirect to='/' />
+        :
+        (
+					<Component />
+        )
+				
     }} />
     )
   }
@@ -22,7 +24,7 @@ export class PublicRoute extends Component {
 const mapStateToProps = (state, nexProps) => {
 
   return {
-    authed: true
+    authed: state.Authentication.details.authed
   }
 }
 

@@ -56,10 +56,8 @@ const SidebarNav = props => {
 		<List {...rest} className={clsx(classes.root, className)}>
 			{pages.map(page => (
 				<ListItem className={classes.item} disableGutters key={page.title}>
-					<RouterLink to={page.href} >
-							{page.title}
-					</RouterLink>
-					{/*<Button
+				
+					<Button
 						activeClassName={classes.active}
 						className={classes.button}
 						component={CustomRouterLink}
@@ -67,7 +65,7 @@ const SidebarNav = props => {
 					>
 						<div className={classes.icon}>{page.icon}</div>
 						{page.title}
-					</Button>*/}
+					</Button>
 				</ListItem>
 			))}
 		</List>

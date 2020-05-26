@@ -3,13 +3,17 @@
  * GitHub repo: https://github.com/yTakkar/React-Instagram-Clone-2.0
  */
 
-import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore, compose } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import createEncryptor from 'redux-persist-transform-encrypt'
+import { connectRouter } from 'connected-react-router'
+
 
 // reducers
 import User from './reducers/User/User'
@@ -21,8 +25,12 @@ import Group from './reducers/Group/Group'
 import Message from './reducers/Message/Message'
 import Setting from './reducers/Setting/Setting'
 import Hashtag from './reducers/Hashtag/hashtag'
+import Authentication from './reducers/Authentication/authentication'
 
-const rootReducer = combineReducers({
+export const history = createBrowserHistory()
+
+const createRootReducer = (history) => combineReducers({
+  Authentication,
   User,
   Follow,
   Notification,
@@ -32,6 +40,7 @@ const rootReducer = combineReducers({
   Message,
   Setting,
   Hashtag,
+  router: connectRouter(history),
 })
 
 const encryptor = createEncryptor({
@@ -44,12 +53,15 @@ const encryptor = createEncryptor({
 const persistConfig = {
   key: 'root',
   storage,
-  transforms: [encryptor]
+  transforms: [encryptor],
+  blacklist: ['router'],
 }
+
+const rootReducer = createRootReducer(history)
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const middlwares = applyMiddleware(thunk, logger)
+const middlwares = applyMiddleware(routerMiddleware(history), thunk, logger)
 
 export let store = createStore(
   persistedReducer,

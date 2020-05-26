@@ -98,8 +98,10 @@ import { Main as MainLayout, Minimal as MinimalLayout } from "../components/layo
 
 const AppRoutes = () => (
   <div className="badshah">
+  <ThemeProvider theme={theme}>
+
     <Switch>
-      <ThemeProvider theme={theme}>
+    
         <PrivateRoute path="/" exact component={Home} layout={MainLayout}/>
         <PrivateRoute path="/profile/:username" component={Profile} layout={MainLayout}/>
         <PrivateRoute path="/error/:what" component={Error} layout={MainLayout}/>
@@ -114,13 +116,15 @@ const AppRoutes = () => (
         <PrivateRoute path="/hashtag/:hashtag" component={Hashtag} layout={MainLayout}/>
         <PrivateRoute path="/admin-login" component={AdminLogin} layout={MainLayout}/>
         <PrivateRoute path="/is-admin" component={IsAdmin} layout={MainLayout}/>
-      </ThemeProvider>
       
       <PublicRoute path="/react-login" component={<Login />} />
 
 
 
     </Switch>
+
+    </ThemeProvider>
+
   </div>
 )
 

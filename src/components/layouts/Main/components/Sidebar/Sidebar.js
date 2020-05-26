@@ -50,7 +50,7 @@ const Sidebar = props => {
 	const pages = [
 		{
 			title: "Home",
-			href: "/home",
+			href: "/",
 			icon: <HomeIcon />
 		},
 		{
@@ -59,25 +59,40 @@ const Sidebar = props => {
 			icon: <FastfoodIcon />
 		},
 		{
-			title: "Restaurant",
-			href: "/restaurants",
+			title: "Messages",
+			href: "/messages",
 			icon: <RestaurantIcon />
 		},
 		{
-			title: "Friends",
-			href: "/friends",
+			title: "Your Bookmarks",
+			href: "/bookmarks",
 			icon: <PeopleIcon />
 		},
 
 		{
-			title: "Cart",
-			href: "/cart",
+			title: "Gallery",
+			href: "/gallery",
 			icon: <ShoppingCartIcon />
 		},
 		{
-			title: "Account",
-			href: "/account",
+			title: "Favourites",
+			href: "/favourites",
 			icon: <AccountBoxIcon />
+		},
+		{
+			title: "Groups",
+			href: "/groups",
+			icon: <SettingsIcon />
+		},
+		{
+			title: "Recommendations",
+			href: "/recommendations",
+			icon: <SettingsIcon />
+		},
+		{
+			title: "Edit Profile",
+			href: "/edit-profile",
+			icon: <SettingsIcon />
 		},
 		{
 			title: "Settings",

@@ -2,6 +2,7 @@
 // import { useAws } from './data/awsClient/dependecyRegisterar'
 import { useDjangoClient } from './dependecyRegisterar'
 import { Container } from 'inversify'
+import 'reflect-metadata'
 
 
 const getRandomColor = () => {

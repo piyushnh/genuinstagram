@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
+import {withRouter} from 'react-router-dom'
 import Title from '../others/title'
 import { getUnreadNotifications } from '../../actions/notification'
 import { connect } from 'react-redux'

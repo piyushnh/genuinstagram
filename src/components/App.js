@@ -6,6 +6,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import { getUnreadNotifications } from '../actions/notification'
 import { getUnreadMessages } from '../actions/message'
 
@@ -25,14 +26,12 @@ class App extends Component {
     let { unreadNotifications, unreadMessages } = this.props
 
     return (
-      <Router>
         <div className="app">
           <Header />
           <NotiSpeak un={unreadNotifications} />
-          <SideBar un={unreadNotifications} uc={unreadMessages} />
+          {/*<SideBar un={unreadNotifications} uc={unreadMessages} />*/}
           <AppRoutes />
         </div>
-      </Router>
     )
   }
 }
@@ -42,5 +41,5 @@ const mapStateToProps = store => ({
   unreadMessages: store.Message.unreadMessages,
 })
 
-export default connect(mapStateToProps)(App)
+export default withRouter(connect(mapStateToProps)(App))
 export { App as PureApp }

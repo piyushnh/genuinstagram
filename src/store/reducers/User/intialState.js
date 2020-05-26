@@ -27,9 +27,5 @@ export default {
   },
   tags: [],
   mutualUsers: [],
-  authentication: {
-    isLoggedin: false,
-    authToken: ''
-
-  }
+  
 }

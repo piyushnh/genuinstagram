@@ -30,7 +30,7 @@ export class PrivateRoute extends Component{
 const mapStateToProps = (state, nexProps) => {
 
   return {
-    authed: true
+    authed: state.Authentication.details.authed
   }
 }
 

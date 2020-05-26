@@ -45,7 +45,7 @@ export class AuthorizeService {
       // this.storeUserProviderData(uid, email!, displayName!, photoURL!, providerId, 'No Access token provided!')
       // this.storeUserInformation(uid,email,displayName,photoURL).then(resolve)
       const backendResult = await this.loginAtBackend(email, displayName, photoURL)
-      console.log(backendResult.data)
+      // console.log(backendResult.data)
 
       if (backendResult.status === 200) {
         return {
@@ -60,6 +60,7 @@ export class AuthorizeService {
           success: false,
           data: null
         }
+
       }
     }
 
