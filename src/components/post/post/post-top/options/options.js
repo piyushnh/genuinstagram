@@ -52,8 +52,8 @@ export default class PostOptions extends Component {
 
 PostOptions.propTypes = {
   postDetails: PropTypes.shape({
-    user: PropTypes.number.isRequired,
-    post_id: PropTypes.number.isRequired,
+    // user: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
     when: PropTypes.string.isRequired,
     post_time: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

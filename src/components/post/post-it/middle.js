@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FileInput from '../../others/input/file'
 import TextArea from '../../others/input/textArea'
-import { CPP } from '../../../actions/post'
+import { CPP } from '../../../store/actions/post'
 
 const PostItMiddle = ({ postIt, session, dispatch }) => {
   let { username } = session

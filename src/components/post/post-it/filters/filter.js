@@ -2,7 +2,7 @@ import React from 'react'
 import { c_first } from '../../../../utils/utils'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { CPP } from '../../../../actions/post'
+import { CPP } from '../../../../store/actions/post'
 import d from '../../../../utils/API/DOM'
 import classNames from 'classnames'
 

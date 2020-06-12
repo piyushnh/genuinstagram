@@ -85,7 +85,7 @@ class Favourite extends Component {
 Favourite.propTypes = {
   fav_id: PropTypes.number.isRequired,
   fav_by: PropTypes.number.isRequired,
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,

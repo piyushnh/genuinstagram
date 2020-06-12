@@ -76,7 +76,7 @@ class PostBookmark extends Component {
 
 PostBookmark.propTypes = {
   postDetails: PropTypes.shape({
-    post_id: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
     when: PropTypes.string.isRequired,
   }).isRequired,
 }

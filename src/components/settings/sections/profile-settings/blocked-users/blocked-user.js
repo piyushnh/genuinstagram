@@ -54,7 +54,7 @@ const BlockedUser = props => {
 BlockedUser.propTypes = {
   block_id: PropTypes.number.isRequired,
   block_time: PropTypes.string.isRequired,
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Me } from '../../../utils/utils'
 import { connect } from 'react-redux'
-import { toggleJoinGroup } from '../../../actions/group'
+import { toggleJoinGroup } from '../../../store/actions/group'
 import Join from '../join-group/join'
 import Leave from '../join-group/leave'
 import AppLink from '../../others/link/link'

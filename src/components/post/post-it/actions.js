@@ -1,38 +1,59 @@
 import React from 'react'
 import { func } from 'prop-types'
 import { connect } from 'react-redux'
-import { addPost } from '../../../utils/post-utils'
-import { CPP, resetPostIt } from '../../../actions/post'
+// import { addPost } from '../../../utils/post-utils'
+import { CPP, resetPostIt, addPost } from '../../../store/actions/post'
 import SecondaryButton from '../../others/button/secondary-btn'
 import PrimaryButton from '../../others/button/primary-btn'
 
 const PostItActions = props => {
   let {
     back,
-    group_name,
+    // group_name,
     postIt: { fileChanged, showOverlay, ...rest },
-    dispatch,
+    // dispatch,
   } = props
 
-  let toggleOverlay = () => dispatch(CPP('showOverlay', !showOverlay))
+  
 
   let BackAndReset = async e => {
     e ? e.preventDefault() : null
-    await dispatch(resetPostIt())
+    await props.resetPostIt()
     back()
   }
 
   let postIt = async e => {
     e.preventDefault()
-    toggleOverlay()
+    // props.toggleOverlay(showOverlay)
 
-    await addPost({
-      dispatch,
-      ...rest,
-      group_name,
-    })
+    // await addPost({
+    //   dispatch,
+    //   ...rest,
+    //   group_name,
+    // })
 
-    toggleOverlay()
+    //   let {
+    //   desc,
+    //   targetFile,
+    //   filter,
+    //   location,
+    //   type,
+    //   group,
+    //   tags,
+    //   group_name
+    // } = Object.assign({}, props.postIt, group_name)
+
+    props.addPost({
+      desc,
+      targetFile,
+      filter,
+      location,
+      type,
+      group,
+      tags,
+      group_name
+    }= Object.assign({}, props.postIt, group_name))
+    // props.toggleOverlay(showOverlay)
     BackAndReset()
   }
 
@@ -59,5 +80,15 @@ const mapStateToProps = state => ({
   postIt: state.Post.postIt,
 })
 
-export default connect(mapStateToProps)(PostItActions)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addPost: (postData) => dispatch(addPost(postData)),
+    toggleOverlay: (showOverlay) => dispatch(CPP('showOverlay', !showOverlay)),
+    resetPostIt:() => dispatch(resetPostIt())
+    
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostItActions)
 export { PostItActions as PurePostItActions }

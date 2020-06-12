@@ -7,7 +7,7 @@ import {
   unsendAllMessages,
   deleteCon,
   deleteMssg,
-} from '../actions/message'
+} from '../store/actions/message'
 import { insta_notify, imageCompressor, uData, wait } from './utils'
 import d from './API/DOM'
 import Action from './API/Action'

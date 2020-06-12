@@ -39,7 +39,7 @@ Leave.defaultProps = {
 
 Leave.propTypes = {
   leaveDetails: shape({
-    user: number.isRequired,
+    //user: number.isRequired,
     group_id: number.isRequired,
   }).isRequired,
   leaved: func.isRequired,

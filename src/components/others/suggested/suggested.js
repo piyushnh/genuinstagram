@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ToolTip from 'react-tooltip'
 import { connect } from 'react-redux'
-import { getSuggestedUsers } from '../../../actions/explore'
+import { getSuggestedUsers } from '../../../store/actions/explore'
 import SuggestedList from './suggested-list'
 import PropTypes from 'prop-types'
 import IsLoading from '../isLoading'

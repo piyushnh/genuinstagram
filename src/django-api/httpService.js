@@ -2,7 +2,7 @@ import { injectable } from 'inversify'
 import { inject } from 'inversify'
 import axios from 'axios'
 import config from '../env-config'
-import store from '../store/store'
+import {store} from '../store/store'
 
 
 @injectable()
@@ -24,7 +24,8 @@ export class HttpService {
         // const validURL = config.settings.prettyURL ? url : (config.rewrites[url] || url)
         const validURL = url
         const requestURL = `${config.settings.api}${validURL}`
-        let authToken = store.Users.auth_details.tokenId
+        console.log(store)
+        let authToken = store.getState().Authentication.details.authToken
         const axiosConfig = {
             headers: {
                 'Authorization': `Token ${authToken}`
@@ -33,7 +34,7 @@ export class HttpService {
         return await axios
             .get(`${config.settings.api}${validURL}`, axiosConfig)
             .then((result) => {
-                return result.data
+                return result
             })
             .catch((error) => {
                 if (error.response) {
@@ -54,7 +55,7 @@ export class HttpService {
   async postWithAuth(url, payload) {
         // const validURL = config.settings.prettyURL ? url : (config.rewrites[url] || url)
         const validURL = url
-        let authToken = store.Users.auth_details.tokenId
+        let authToken = store.getState().Authentication.details.authToken
         const axiosConfig = {
             headers: {
                 'Authorization': `Token ${authToken}`
@@ -64,7 +65,7 @@ export class HttpService {
         return await axios
             .post(`${config.settings.api}${validURL}`, payload, axiosConfig)
             .then((result) => {
-                return result.data
+                return result
             })
             .catch((error) => {
                 if (error.response) {
@@ -86,8 +87,8 @@ export class HttpService {
         // const validURL = config.settings.prettyURL ? url : (config.rewrites[url] || url)
         const validURL = url
         const requestURL = `${config.settings.api}${validURL}`
-        const result = await axios
-            .get(requestURL)
+        // const result = await axios
+        //     .get(requestURL)
         return await axios
             .get(`${config.settings.api}${validURL}`)
             .then((result) => {
@@ -112,8 +113,8 @@ export class HttpService {
     async post(url, payload) {
         // const validURL = config.settings.prettyURL ? url : (config.rewrites[url] || url)
         const validURL = url
-        const result = await axios
-            .post(`${config.settings.api}${validURL}`, payload)
+        // const result = await axios
+        //     .post(`${config.settings.api}${validURL}`, payload)
         return await axios
             .post(`${config.settings.api}${validURL}`, payload)
             .then((result) => {

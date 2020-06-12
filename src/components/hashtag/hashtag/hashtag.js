@@ -4,7 +4,7 @@ import Title from '../../others/title'
 import PopularHashtags from './../popular-hashtags'
 import UserHashtags from './../user-hashtags'
 import { connect } from 'react-redux'
-import { getHashtagPosts } from '../../../actions/hashtag'
+import { getHashtagPosts } from '../../../store/actions/hashtag'
 import HashtagInfo from './info'
 import MiddleSection from './middle-section'
 

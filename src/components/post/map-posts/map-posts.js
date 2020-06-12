@@ -8,11 +8,9 @@ const MapPosts = ({ posts, nothingMssg }) => {
 
   return (
     <Fragment>
-      {len == 0 ? (
-        <Nothing mssg={nothingMssg} />
-      ) : (
+      
         <FadeIn duration="500ms">{posts}</FadeIn>
-      )}
+      
     </Fragment>
   )
 }

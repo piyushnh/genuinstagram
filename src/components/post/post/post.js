@@ -57,9 +57,9 @@ export default class Post extends Component {
 }
 
 Post.propTypes = {
-  post_id: PropTypes.number.isRequired,
+  post_id:PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  user: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,
@@ -83,8 +83,8 @@ Post.propTypes = {
     'hashtag',
   ]).isRequired,
   likes_count: PropTypes.number.isRequired,
-  shares_count: PropTypes.number.isRequired,
+  shares_count: PropTypes.number,
   comments_count: PropTypes.number.isRequired,
-  tags_count: PropTypes.number.isRequired,
+  tags_count: PropTypes.number,
   comments: PropTypes.array,
 }

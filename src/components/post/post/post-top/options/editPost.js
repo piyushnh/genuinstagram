@@ -51,10 +51,11 @@ export default class EditPostOption extends Component {
 
 EditPostOption.propTypes = {
   postDetails: PropTypes.shape({
-    user: PropTypes.number.isRequired,
-    post_id: PropTypes.number.isRequired,
+    // user: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
   updateDescription: PropTypes.func.isRequired,
   toggleOptions: PropTypes.func.isRequired,
 }
+

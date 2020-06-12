@@ -1,8 +1,8 @@
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import { addGroupPost, addUserPost } from '../actions/post'
+import { addGroupPost, addUserPost } from '../store/actions/post'
 import { imageCompressor, insta_notify, Me, uData, wait } from './utils'
-import * as PostActions from '../actions/post'
+import * as PostActions from '../store/actions/post'
 import d from './API/DOM'
 import Action from './API/Action'
 

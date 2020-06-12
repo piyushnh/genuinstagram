@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomRouterLink = forwardRef((props, ref) => {
-	console.log(props)
 	return (<div ref={ref} style={{ flexGrow: 1 }}>
 		<RouterLink {...props} />
 	</div>)

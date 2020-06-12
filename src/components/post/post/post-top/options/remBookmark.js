@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { isAdmin } from '../../../../../utils/admin-utils'
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import { unbookmark } from '../../../../../actions/post'
+import { unbookmark } from '../../../../../store/actions/post'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -29,8 +29,8 @@ const RemBookmarkAsAdmin = ({ post_id, user, when, dispatch }) => {
 }
 
 RemBookmarkAsAdmin.propTypes = {
-  post_id: PropTypes.number.isRequired,
-  user: PropTypes.number.isRequired,
+  post_id:PropTypes.string.isRequired,
+  // user: PropTypes.number.isRequired,
   when: PropTypes.string.isRequired,
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import { connect } from 'react-redux'
-import { editComment } from '../../../../actions/post'
+import { editComment } from '../../../../store/actions/post'
 import { post } from 'axios'
 import Notify from 'handy-notification'
 import d from '../../../../utils/API/DOM'

@@ -2,33 +2,48 @@ import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import {withRouter} from 'react-router-dom'
 import Title from '../others/title'
-import { getUnreadNotifications } from '../../actions/notification'
+import { getUnreadNotifications } from '../../store/actions/notification'
 import { connect } from 'react-redux'
-import { getFeed } from '../../actions/post'
+import { getTimeline } from '../../store/actions/post'
 import Suggested from '../others/suggested/suggested'
 import CreateGroup from '../group/create-group/create-group'
 import PostItTeaser from '../post/post-it/post-it-teaser'
-import { getUnreadMessages } from '../../actions/message'
+import { getUnreadMessages } from '../../store/actions/message'
 import PopularHashtags from '../hashtag/popular-hashtags'
 import { Instagram } from 'react-content-loader'
 import Feed from './feed'
 
 class Home extends Component {
   state = {
-    loading: true,
+    // loading: this.props.feed.length === 0,
   }
 
   componentDidMount = () => {
     let { dispatch } = this.props
-    dispatch(getFeed())
-    dispatch(getUnreadNotifications())
-    dispatch(getUnreadMessages())
+    dispatch(getTimeline())
+    // dispatch(getUnreadNotifications())
+    // dispatch(getUnreadMessages())
+
+    if (this.props.feed.length !== 0)
+      {
+        this.setState({ loading: false })
+      }
   }
 
-  componentWillReceiveProps = () => this.setState({ loading: false })
+  // componentWillReceiveProps = () => this.setState({ loading: false })
+
+  // componentDidUpdate(prevProps)
+  // {
+  //   if (this.props.feed.length !== 0)
+  //     {
+  //       this.setState({ loading: false })
+  //     }
+
+  // }
 
   render() {
-    let { loading } = this.state
+    // let { loading } = this.state && (this.props.feed.length !== 0)
+    let loading = !(this.props.feed.length !== 0)
 
     return (
       <div>
@@ -37,15 +52,10 @@ class Home extends Component {
         <FadeIn duration="300ms">
           <div className="senapati home_senapati">
             <div className="prajkumar">
-              <PostItTeaser type="user" disabled={loading} />
+              {/*<PostItTeaser type="user" disabled={loading} />*/}
+              <PostItTeaser type="user" />
 
-              {loading && (
-                <div style={{ marginTop: 20 }}>
-                  <Instagram />
-                  <Instagram />
-                  <Instagram />
-                </div>
-              )}
+            
 
               <Feed />
             </div>
@@ -62,8 +72,8 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = store => ({
-  store,
+const mapStateToProps = state => ({
+  feed: state.Post.feed,
 })
 
 export default connect(mapStateToProps)(Home)

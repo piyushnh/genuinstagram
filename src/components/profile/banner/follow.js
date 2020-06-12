@@ -1,7 +1,7 @@
 import React from 'react'
 import { Me } from '../../../utils/utils'
 import { connect } from 'react-redux'
-import { toggleFollow } from '../../../actions/follow'
+import { toggleFollow } from '../../../store/actions/follow'
 import Unfollow from '../../others/follow/unfollow'
 import Follow from '../../others/follow/follow'
 import AppLink from '../../others/link/link'

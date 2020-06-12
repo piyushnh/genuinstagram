@@ -30,6 +30,14 @@ export default class PostImage extends Component {
       <div>
         <div className="p_o">
           <div className="p_actual" spellCheck="false">
+            
+
+            <img
+              src={imgSrc}
+              className={classNames('p_img', filter)}
+              onClick={() => this._toggle('showImage')}
+            />
+
             <div
               className="p_abt"
               style={{ marginBottom: description ? '10px' : null }}
@@ -39,19 +47,13 @@ export default class PostImage extends Component {
               </p>
             </div>
 
-            <img
-              src={`/posts/${imgSrc}`}
-              className={classNames('p_img', filter)}
-              onClick={() => this._toggle('showImage')}
-            />
-
             <PostTags post_id={post_id} tags_count={tags_count} />
           </div>
         </div>
 
         {showImage && (
           <ImageTheatre
-            imgSrc={`/posts/${imgSrc}`}
+            imgSrc={imgSrc}
             filter={filter}
             username={username}
             time={post_time}
@@ -66,12 +68,12 @@ export default class PostImage extends Component {
 
 PostImage.propTypes = {
   postDetails: PropTypes.shape({
-    post_id: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
     post_time: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     filter: PropTypes.string.isRequired,
-    tags_count: PropTypes.number.isRequired,
+    tags_count: PropTypes.number,
     username: PropTypes.string.isRequired,
   }).isRequired,
 }

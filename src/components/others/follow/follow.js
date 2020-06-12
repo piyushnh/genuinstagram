@@ -48,7 +48,7 @@ Follow.defaultProps = {
 
 Follow.propTypes = {
   userDetails: shape({
-    user: number.isRequired,
+    //user: number.isRequired,
     username: string.isRequired,
     firstname: string,
     surname: string,

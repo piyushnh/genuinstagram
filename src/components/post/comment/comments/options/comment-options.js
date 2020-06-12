@@ -62,8 +62,8 @@ class CommentTools extends Component {
 
 CommentTools.propTypes = {
   commentDetails: PropTypes.shape({
-    comment_id: PropTypes.number.isRequired,
-    comment_by: PropTypes.number.isRequired,
+    comment_id: PropTypes.string.isRequired,
+    comment_by: PropTypes.object.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     commentSrc: PropTypes.string.isRequired,

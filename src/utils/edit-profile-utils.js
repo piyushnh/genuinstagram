@@ -1,6 +1,6 @@
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import { addTag } from '../actions/user'
+import { addTag } from '../store/actions/user'
 import { ObjectMssg, wait } from './utils'
 import Action from './API/Action'
 

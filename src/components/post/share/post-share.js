@@ -46,8 +46,8 @@ export default class PostShare extends Component {
 
 PostShare.propTypes = {
   postDetails: PropTypes.shape({
-    post_id: PropTypes.number.isRequired,
-    user: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
+    // user: PropTypes.number.isRequired,
   }).isRequired,
   incrementWhat: PropTypes.func.isRequired,
   decrementWhat: PropTypes.func.isRequired,

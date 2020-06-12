@@ -64,10 +64,10 @@ export default class PostActions extends Component {
 
 PostActions.propTypes = {
   postDetails: shape({
-    post_id: number.isRequired,
-    user: number.isRequired,
+    post_id: string.isRequired,
+    // //user: number.isRequired,
     when: string.isRequired,
     likes_count: number.isRequired,
-    shares_count: number.isRequired,
+    shares_count: number,
   }).isRequired,
 }

@@ -1,6 +1,6 @@
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import { unblockUser } from '../actions/settings'
+import { unblockUser } from '../store/actions/settings'
 import { ObjectMssg, wait } from './utils'
 import Action from './API/Action'
 

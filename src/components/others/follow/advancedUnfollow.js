@@ -42,7 +42,7 @@ const AdvancedUnfollow = ({ user, unfollowed, ud, dispatch }) => {
 }
 
 AdvancedUnfollow.propTypes = {
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   unfollowed: PropTypes.func.isRequired,
 }
 

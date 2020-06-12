@@ -4,7 +4,7 @@ import {
   getUsersToExplore,
   getPhotosToExplore,
   getGroupsToExplore,
-} from '../../actions/explore'
+} from '../../store/actions/explore'
 import { connect } from 'react-redux'
 import FAIcon from '../others/icons/font-awesome-icon'
 import { string } from 'prop-types'

@@ -44,7 +44,7 @@ Unfollow.defaultProps = {
 }
 
 Unfollow.propTypes = {
-  user: number.isRequired,
+  //user: number.isRequired,
   unfollowed: func.isRequired,
   updateFollowings: bool,
   updateFollowers: bool,

@@ -15,7 +15,8 @@ const ImageTheatre = props => {
       <div className="image_show">
         <FadeIn duration="300ms">
           <div className="img_s_img">
-            <img src={imgSrc} className={filter} />
+            {/*<img src={imgSrc} className={filter} /> FILTERED */}
+            <img src={imgSrc} />
 
             <ImageTheatreInfo {...props} />
           </div>

@@ -19,7 +19,7 @@ const PostTopDetails = ({ details }) => {
   return (
     <Fragment>
       <div className="p_i_img">
-        <img src={`/users/${user}/avatar.jpg`} />
+        <img src={user.profile_picture} />
       </div>
       <div className="p_i_1" style={{ top: type == 'group' ? -8 : 'inherit' }}>
         <AppLink
@@ -49,7 +49,7 @@ const PostTopDetails = ({ details }) => {
 
 PostTopDetails.propTypes = {
   details: PropTypes.shape({
-    user: PropTypes.number.isRequired,
+    user: PropTypes.object.isRequired,
     username: PropTypes.string.isRequired,
     firstname: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,

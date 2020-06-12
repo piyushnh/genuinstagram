@@ -8,6 +8,7 @@ import ModalBack from '../../../others/modal/modal-back'
 import TextArea from '../../../others/input/textArea'
 import Overlay from '../../../others/overlay'
 import { number, func, string } from 'prop-types'
+import PropTypes from 'prop-types';
 
 @connect()
 export default class TextCommentModal extends Component {
@@ -35,7 +36,6 @@ export default class TextCommentModal extends Component {
 
     return (
       <div>
-        <Overlay />
 
         <div className="edit_post modal">
           <FadeIn duration="300ms">
@@ -62,13 +62,13 @@ export default class TextCommentModal extends Component {
               />
 
               <ModalBack back={back} btnType="secondary" />
-
               <PrimaryButton
                 label="Comment"
                 onClick={this.comment}
                 disabled={!text}
               />
             </div>
+
           </FadeIn>
         </div>
       </div>
@@ -77,8 +77,8 @@ export default class TextCommentModal extends Component {
 }
 
 TextCommentModal.propTypes = {
-  post: number.isRequired,
-  postOwner: number.isRequired,
+  post: string.isRequired,
+  postOwner: PropTypes.object.isRequired,
   back: func.isRequired,
   incrementComments: func.isRequired,
   when: string.isRequired,

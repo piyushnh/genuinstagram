@@ -59,7 +59,7 @@ const OnlineUser = props => {
 }
 
 OnlineUser.propTypes = {
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,

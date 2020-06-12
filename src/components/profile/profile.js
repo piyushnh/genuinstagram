@@ -9,12 +9,12 @@ import {
   cLoading,
 } from '../../utils/utils'
 import { isAdmin } from '../../utils/admin-utils'
-import { getUnreadNotifications } from '../../actions/notification'
+import { getUnreadNotifications } from '../../store/actions/notification'
 import Banner from './banner/banner'
 import ProfileNav from './nav'
 import Nothing from '../others/nothing'
 import ProfileRoutes from './profile-routes'
-import { getUnreadMessages } from '../../actions/message'
+import { getUnreadMessages } from '../../store/actions/message'
 import IsLoading from '../others/isLoading'
 
 class Profile extends Component {

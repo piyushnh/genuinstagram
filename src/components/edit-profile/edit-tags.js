@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
-import { deleteTag } from '../../actions/user'
+import { deleteTag } from '../../store/actions/user'
 import * as Edit from '../../utils/edit-profile-utils'
 import PropTypes from 'prop-types'
 import d from '../../utils/API/DOM'
@@ -66,7 +66,7 @@ EditTags.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       tag: PropTypes.string.isRequired,
-      user: PropTypes.number.isRequired,
+      // user: PropTypes.number.isRequired,
     })
   ),
   emptyTagsInput: PropTypes.func.isRequired,

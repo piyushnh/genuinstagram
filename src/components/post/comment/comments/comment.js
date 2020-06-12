@@ -70,13 +70,13 @@ export default class Comment extends Component {
 }
 
 Comment.propTypes = {
-  comment_id: PropTypes.number.isRequired,
-  comment_by: PropTypes.number.isRequired,
-  comment_by_username: PropTypes.string.isRequired,
+  comment_id: PropTypes.string.isRequired,
+  comment_by: PropTypes.object.isRequired,
+  comment_by_username: PropTypes.string,
   comment_time: PropTypes.string.isRequired,
-  post_id: PropTypes.number.isRequired,
+  post_id:PropTypes.string.isRequired,
   commentSrc: PropTypes.string,
   text: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'sticker', 'image']).isRequired,
+  type: PropTypes.oneOf(['text', 'sticker', 'image']),
   decrementComments: PropTypes.func.isRequired,
 }

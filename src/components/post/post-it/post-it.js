@@ -11,7 +11,7 @@ import ToggleAddTags from './toggleAddTags'
 import PostItActions from './actions'
 import { func, oneOf, number } from 'prop-types'
 import AddEmojis from '../../others/emojis/add-emojis'
-import { CPP } from '../../../actions/post'
+import { CPP } from '../../../store/actions/post'
 import { connect } from 'react-redux'
 
 @connect(store => ({
@@ -37,7 +37,7 @@ export default class PostIt extends Component {
 
         <div className="post" style={{ left: fileChanged ? '41%' : '50%' }}>
           <FadeIn duration="300ms">
-            {fileChanged && <Filters />}
+            {/*fileChanged && <Filters />*/}
 
             <PostItHeader />
             <Middle />

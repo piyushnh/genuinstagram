@@ -117,7 +117,7 @@ const AppRoutes = () => (
         <PrivateRoute path="/admin-login" component={AdminLogin} layout={MainLayout}/>
         <PrivateRoute path="/is-admin" component={IsAdmin} layout={MainLayout}/>
       
-      <PublicRoute path="/react-login" component={<Login />} />
+      <PublicRoute path="/react-login" component={Login} />
 
 
 

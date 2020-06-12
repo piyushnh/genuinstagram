@@ -40,9 +40,9 @@ Notification.propTypes = {
   notify_by_username: PropTypes.string.isRequired,
   notify_time: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   user_username: PropTypes.string.isRequired,
-  post_id: PropTypes.number.isRequired,
+  post_id:PropTypes.string.isRequired,
   group_id: PropTypes.number.isRequired,
   isFollowing: PropTypes.bool.isRequired,
 }

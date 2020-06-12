@@ -34,7 +34,7 @@ MonTopInfo.defaultProps = {
 
 MonTopInfo.propTypes = {
   info: PropTypes.shape({
-    user: PropTypes.number.isRequired,
+    // user: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     firstname: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,

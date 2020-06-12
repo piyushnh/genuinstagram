@@ -78,7 +78,7 @@ class PeopleYouKnowList extends Component {
 
 PeopleYouKnowList.propTypes = {
   follow_id: PropTypes.number.isRequired,
-  user: PropTypes.number.isRequired,
+  // user: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,

@@ -5,10 +5,10 @@
 
 import axios, { post } from 'axios'
 import Notify from 'handy-notification'
-import { getUserDetails, getMutualUsers } from '../actions/user'
-import { isFollowing, getUserStats } from '../actions/follow'
-import { getUserPosts, getGroupPosts } from '../actions/post'
-import { getGroupDetails, joinedGroup } from '../actions/group'
+import { getUserDetails, getMutualUsers } from '../store/actions/user'
+import { isFollowing, getUserStats } from '../store/actions/follow'
+import { getUserPosts, getGroupPosts } from '../store/actions/post'
+import { getGroupDetails, joinedGroup } from '../store/actions/group'
 import Compress from 'image-compressor.js'
 import d from './API/DOM'
 

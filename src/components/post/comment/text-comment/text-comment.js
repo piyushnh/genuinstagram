@@ -39,8 +39,8 @@ export default class TextComment extends Component {
 
 TextComment.propTypes = {
   postDetails: PropTypes.shape({
-    post_id: PropTypes.number.isRequired,
-    user: PropTypes.number.isRequired,
+    post_id:PropTypes.string.isRequired,
+    // user: PropTypes.number.isRequired,
     when: PropTypes.string.isRequired,
   }).isRequired,
   incrementComments: PropTypes.func.isRequired,

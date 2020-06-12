@@ -1,6 +1,6 @@
 import { post } from 'axios'
 import Notify from 'handy-notification'
-import * as followA from '../actions/follow'
+import * as followA from '../store/actions/follow'
 import { insta_notify, uData } from './utils'
 
 /**

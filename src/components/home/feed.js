@@ -8,16 +8,29 @@ const Feed = ({ feed }) => {
   let len = feed.length
   let map_feed = feed.map(f => <Post key={f.post_id} {...f} when="feed" />)
 
-  let nothingMssg =
-    "Looks like you're new, Follow some to fill up your feed or post from above options!!"
+  let loadingMssg =
+    "Please wait, we're fetching your feed!"
 
   return (
     <Fragment>
-      <div className="posts_div" style={{ marginTop: len == 0 ? 10 : 0 }}>
-        <MapPosts posts={map_feed} nothingMssg={nothingMssg} />
-      </div>
 
-      {len != 0 && <End />}
+    {len == 0 ? (
+        <Fragment>
+        <Nothing mssg={loadingMssg} />
+        <div style={{ marginTop: 20 }}>
+                  <Instagram />
+                  <Instagram />
+                  <Instagram />
+        </div>
+        </Fragment>
+      ) : (
+        
+      <div className="posts_div" style={{ marginTop: len == 0 ? 10 : 0 }}>
+        <MapPosts posts={map_feed}  />
+      </div>
+      )}
+
+      {len == 0 && <End />}
     </Fragment>
   )
 }

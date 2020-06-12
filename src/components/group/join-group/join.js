@@ -25,7 +25,7 @@ const Join = ({ joinDetails, joined }) => {
 
 Join.propTypes = {
   joinDetails: shape({
-    user: number.isRequired,
+    //user: number.isRequired,
     addedBy: number.isRequired,
     group_id: number.isRequired,
   }).isRequired,

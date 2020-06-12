@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getPopularHashtags } from '../../actions/hashtag'
+import { getPopularHashtags } from '../../store/actions/hashtag'
 import MapHashtags from './hashtag-utils/map-hashtags'
 import HashtagHeader from './hashtag-utils/hashtag-header'
 

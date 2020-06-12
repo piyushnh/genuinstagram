@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { isAdmin } from '../../../../../utils/admin-utils'
 import Prompt from '../../../../others/prompt'
-import { deleteComment } from '../../../../../actions/post'
+import { deleteComment } from '../../../../../store/actions/post'
 import Notify from 'handy-notification'
 import { post } from 'axios'
 import { connect } from 'react-redux'
@@ -62,7 +62,7 @@ class DeleteCommentOption extends Component {
 
 DeleteCommentOption.propTypes = {
   commentDetails: PropTypes.shape({
-    comment_id: PropTypes.number.isRequired,
+    comment_id: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     commentSrc: PropTypes.string.isRequired,
   }).isRequired,

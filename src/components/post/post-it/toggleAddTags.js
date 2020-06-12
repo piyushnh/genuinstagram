@@ -1,7 +1,7 @@
 import React from 'react'
 import MaterialIcon from '../../others/icons/material-icon'
 import { connect } from 'react-redux'
-import { CPP } from '../../../actions/post'
+import { CPP } from '../../../store/actions/post'
 import classNames from 'classnames'
 
 const ToggleAddTags = ({ addTag, dispatch }) => {

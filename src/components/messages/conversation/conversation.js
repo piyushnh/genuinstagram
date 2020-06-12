@@ -6,7 +6,7 @@ import {
   getConversationMessages,
   readConversation,
   getConDetails,
-} from '../../../actions/message'
+} from '../../../store/actions/message'
 import MapMessages from './message/map-messages'
 import TextMessage from './bottom/text-message'
 import ConversationTop from './top/con-top'

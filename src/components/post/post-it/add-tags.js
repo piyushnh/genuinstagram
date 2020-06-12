@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import SearchFollowings from '../../others/search-followings/search-followings'
 import { connect } from 'react-redux'
-import { CPP } from '../../../actions/post'
+import { CPP } from '../../../store/actions/post'
 
 class AddTags extends Component {
   updateTags = tags => this.props.dispatch(CPP('tags', tags))

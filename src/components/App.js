@@ -7,8 +7,8 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { getUnreadNotifications } from '../actions/notification'
-import { getUnreadMessages } from '../actions/message'
+import { getUnreadNotifications } from '../store/actions/notification'
+import { getUnreadMessages } from '../store/actions/message'
 
 import Header from './others/header/header'
 import NotiSpeak from './others/noti-speak'
@@ -41,5 +41,5 @@ const mapStateToProps = store => ({
   unreadMessages: store.Message.unreadMessages,
 })
 
-export default withRouter(connect(mapStateToProps)(App))
+export default connect(mapStateToProps)(App)
 export { App as PureApp }

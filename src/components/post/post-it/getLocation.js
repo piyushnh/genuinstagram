@@ -2,7 +2,7 @@ import React from 'react'
 import { geolocation, getAddress } from '../../../utils/location-utils'
 import MaterialIcon from '../../others/icons/material-icon'
 import { connect } from 'react-redux'
-import { CPP } from '../../../actions/post'
+import { CPP } from '../../../store/actions/post'
 import classNames from 'classnames'
 
 const GetLocation = ({ postIt, dispatch }) => {
