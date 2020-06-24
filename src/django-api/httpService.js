@@ -58,7 +58,42 @@ export class HttpService {
         let authToken = store.getState().Authentication.details.authToken
         const axiosConfig = {
             headers: {
-                'Authorization': `Token ${authToken}`
+                'Authorization': `Token ${authToken}`,
+                 
+            }
+        }
+
+        return await axios
+            .post(`${config.settings.api}${validURL}`, payload, axiosConfig)
+            .then((result) => {
+                return result
+            })
+            .catch((error) => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+
+                    error = error.response
+                }
+
+                throw error
+
+            })
+
+    }
+
+        /**
+     * Http POST
+     */
+  async postFileWithAuth(url, payload) {
+        // const validURL = config.settings.prettyURL ? url : (config.rewrites[url] || url)
+        const validURL = url
+        let authToken = store.getState().Authentication.details.authToken
+        const axiosConfig = {
+            headers: {
+                'Authorization': `Token ${authToken}`,
+                 'accept': 'application/json',
+                 'Content-Type': `multipart/form-data; boundary=${payload._boundary}`,
             }
         }
 

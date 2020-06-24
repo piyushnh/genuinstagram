@@ -18,7 +18,7 @@ export default class PostImage extends Component {
         post_id,
         post_time,
         description,
-        imgSrc,
+        image,
         filter,
         username,
         tags_count,
@@ -33,7 +33,7 @@ export default class PostImage extends Component {
             
 
             <img
-              src={imgSrc}
+              src={image}
               className={classNames('p_img', filter)}
               onClick={() => this._toggle('showImage')}
             />
@@ -53,7 +53,7 @@ export default class PostImage extends Component {
 
         {showImage && (
           <ImageTheatre
-            imgSrc={imgSrc}
+            imgSrc={image}
             filter={filter}
             username={username}
             time={post_time}
@@ -71,7 +71,7 @@ PostImage.propTypes = {
     post_id:PropTypes.string.isRequired,
     post_time: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    imgSrc: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     filter: PropTypes.string.isRequired,
     tags_count: PropTypes.number,
     username: PropTypes.string.isRequired,

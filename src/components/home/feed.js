@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import End from '../others/end'
 import Post from '../post/post/post'
 import MapPosts from '../post/map-posts/map-posts'
+import Nothing from '../others/nothing'
+import { Instagram } from 'react-content-loader'
+
 
 const Feed = ({ feed }) => {
   let len = feed.length

@@ -32,18 +32,7 @@ const PostItActions = props => {
     //   group_name,
     // })
 
-    //   let {
-    //   desc,
-    //   targetFile,
-    //   filter,
-    //   location,
-    //   type,
-    //   group,
-    //   tags,
-    //   group_name
-    // } = Object.assign({}, props.postIt, group_name)
-
-    props.addPost({
+      let {
       desc,
       targetFile,
       filter,
@@ -51,10 +40,21 @@ const PostItActions = props => {
       type,
       group,
       tags,
-      group_name
-    }= Object.assign({}, props.postIt, group_name))
+      // group_name
+    } =  props.postIt
+// Object.assign({}, props.postIt, group_name)
+    await props.addPost({
+      desc,
+      targetFile,
+      filter,
+      location,
+      type,
+      group,
+      tags,
+      // group_name
+    })
     // props.toggleOverlay(showOverlay)
-    BackAndReset()
+    // BackAndReset()
   }
 
   return (

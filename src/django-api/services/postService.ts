@@ -62,7 +62,7 @@ export class PostService {
 
   }
 
-  addPost = async (postData) => {
+  addPost = async (payLoad) => {
 
     try {
 
@@ -71,17 +71,41 @@ export class PostService {
       //     .post(`http://127.0.0.1:8000/auth/social/authenticate/`, payLoad)
 
 
-      let payLoad = {
-        description: postData.desc,
-        image: postData.targetFile,
-        location: postData.location,
-        privacy_type: 'FRIENDS'
 
-
+      const result = await this.httpService.postFileWithAuth(`post/publishPost/`, payLoad)
+      if (result.status === 200) {
+        return {
+          success: true,
+          data: result.data
+        }
+      }
+      else {
+        return {
+          mssg: 'Unable to post',
+          success: false,
+          data: null
+        }
 
       }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
 
-      const result = await this.httpService.postWithAuth(`post/publishPost/`, payLoad)
+
+  }
+
+  getPost = async (postId) => {
+
+    try {
+
+
+
+
+
+
+      const result = await this.httpService.getWithAuth(`post/getPost/${postId}`)
       if (result.status === 200) {
         return {
           success: true,
@@ -107,3 +131,7 @@ export class PostService {
 
 
 }
+
+
+
+

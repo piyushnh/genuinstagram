@@ -18,6 +18,12 @@ import App from './components/App'
 import Approutes from './routes/MainRoutes'
 import './django-api/socialEngine'
 
+import JavascriptTimeAgo from 'javascript-time-ago'
+
+import en from 'javascript-time-ago/locale/en'
+
+JavascriptTimeAgo.addLocale(en)
+
 let element = document.getElementById('root')
 if (element) {
   ReactDOM.render(

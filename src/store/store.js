@@ -54,7 +54,7 @@ const persistConfig = {
   key: 'root',
   storage,
   transforms: [encryptor],
-  blacklist: ['router'],
+  whitelist: ['User','Authentication' ],
 }
 
 const rootReducer = createRootReducer(history)

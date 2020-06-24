@@ -5,12 +5,12 @@ import Title from '../others/title'
 import { getUnreadNotifications } from '../../store/actions/notification'
 import { connect } from 'react-redux'
 import { getTimeline } from '../../store/actions/post'
+import { getProfile } from '../../store/actions/user'
 import Suggested from '../others/suggested/suggested'
 import CreateGroup from '../group/create-group/create-group'
 import PostItTeaser from '../post/post-it/post-it-teaser'
 import { getUnreadMessages } from '../../store/actions/message'
 import PopularHashtags from '../hashtag/popular-hashtags'
-import { Instagram } from 'react-content-loader'
 import Feed from './feed'
 
 class Home extends Component {
@@ -21,6 +21,8 @@ class Home extends Component {
   componentDidMount = () => {
     let { dispatch } = this.props
     dispatch(getTimeline())
+    dispatch(getProfile())
+
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())
 

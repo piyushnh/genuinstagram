@@ -44,8 +44,7 @@ export const addGroupPost = post => {
 export const getGroupPhotos = group =>
   dispatchHelper('GET_GROUP_PHOTOS', 'get-group-photos', { group })
 
-export const getPost = post_id =>
-  dispatchHelper('GET_POST', 'get-post', { post_id })
+
 
 export const editPost = post_details => {
   return {
@@ -144,6 +143,7 @@ export const getTimeline = () => {
    return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
 
+  
     return postService.getTimeline().then((result) => {
       // Send email verification successful.
       if (result.success)
@@ -192,18 +192,42 @@ export const getTimeline = () => {
   }
 }
 
-export const addPost = (postData) => {
+export const  addPost = (postData) => {
    return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
+    // console.log()
 
-    return postService.addPost(postData).then((result) => {
+    const payLoad = new FormData();
+
+    payLoad.set('image', postData.targetFile);
+    payLoad.set('description', postData.desc);
+    payLoad.set('location', postData.location);
+    payLoad.set('privacy_type', 'FRIENDS');
+
+
+    // imageData.append( 
+    //   "file", 
+    //   postData.targetFile, 
+    //   postData.targetFile.fileName
+    // ); 
+
+    // let payLoad = {
+    //     description: postData.desc,
+    //     image: postData.targetFile,
+    //     location: postData.location,
+    //     privacy_type: 'FRIENDS'
+
+
+
+    //   }
+    return postService.addPost(payLoad).then((result) => {
       // Send email verification successful.
       if (result.success)
       {
         
-        const postId = result.postId
+        
 
-        dispatch(push(`/post/${postId}`))
+        dispatch(push(`/post/${result.data.post_id}`))
       }
       else {
         Notify({
@@ -223,3 +247,43 @@ export const addPost = (postData) => {
       })
   }
 }
+
+// export const getPost = post_id =>
+//   dispatchHelper('GET_POST', 'get-post', { post_id })
+
+
+export const  getPost = (postId) => {
+   return (dispatch, getState) => {
+   
+
+
+
+    return postService.getPost(postId).then((result) => {
+      // Send email verification successful.
+      if (result.success)
+      {
+        
+        const postData = result.data;
+
+
+         dispatch({ type: 'GET_POST' , payload: postData })
+      }
+      else {
+        Notify({
+          value: result.mssg
+        })
+      }
+     
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+        Notify({
+          value: 'Something went wrong'
+        })
+
+
+      })
+  }
+}
+

@@ -2,6 +2,7 @@ import { HttpService } from './httpService'
 import {SocialProviderTypes} from './socialProviderTypes'
 import {AuthorizeService} from './services/authorizeService.ts'
 import {PostService} from './services/postService.ts'
+import {UserService} from './services/userService.ts'
 
 // inversify.decorate(inversify.injectable(), Katana);
 
@@ -13,6 +14,7 @@ export const useDjangoClient = (container) => {
   container.bind(SocialProviderTypes.HttpService).to(HttpService),
   container.bind(SocialProviderTypes.AuthorizeService).to(AuthorizeService)
   container.bind(SocialProviderTypes.PostService).to(PostService)
+  container.bind(SocialProviderTypes.UserService).to(UserService)
 
 
 }

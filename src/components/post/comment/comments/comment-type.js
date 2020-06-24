@@ -12,10 +12,10 @@ const CommentType = ({ type, text, commentSrc }) => {
   return (
     <Fragment>
       {// if no comment
-      type == 'text' && !text ? (
+      type == 'TEXT' && !text ? (
         <span style={noComment}>Empty comment</span>
       ) : // if text comment
-      type == 'text' ? (
+      type == 'TEXT' ? (
         <p className="ce">
           <ToTags str={text} />
         </p>

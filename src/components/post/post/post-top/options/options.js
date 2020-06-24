@@ -3,6 +3,7 @@ import TimeAgo from 'handy-timeago'
 import PostOptionLists from './options-list'
 import PropTypes from 'prop-types'
 import MaterialIcon from '../../../../others/icons/material-icon'
+import ReactTimeAgo from 'react-time-ago'
 
 export default class PostOptions extends Component {
   state = {
@@ -22,7 +23,8 @@ export default class PostOptions extends Component {
       <div>
         <div className="p_i_2">
           <div className="p_time">
-            <span>{post_time && TimeAgo(post_time).replace(/\s ago/, '')}</span>
+            {/*span>{post_time && TimeAgo(post_time).replace(/\s ago/, '')}</span>*/}
+            <ReactTimeAgo date={post_time}/>
           </div>
           <div className="p_h_opt">
             <span className="exp_p_menu" onClick={this.toggleOptions}>

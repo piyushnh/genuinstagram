@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import Title from '../../others/title'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router";
+
 import { getPost } from '../../../store/actions/post'
 import { getUnreadNotifications } from '../../../store/actions/notification'
 import { getUnreadMessages } from '../../../store/actions/message'
@@ -17,6 +19,7 @@ class ViewPost extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props)
     let {
       match: {
         params: { post_id },
@@ -24,11 +27,16 @@ class ViewPost extends Component {
       dispatch,
     } = this.props
     post_id ? dispatch(getPost(post_id)) : null
-    dispatch(getUnreadNotifications())
-    dispatch(getUnreadMessages())
+    // dispatch(getUnreadNotifications())
+    // dispatch(getUnreadMessages())
+
+    if (this.props.post !== '')
+      {
+        this.setState({ loading: false })
+      }
   }
 
-  componentWillReceiveProps = () => this.setState({ loading: false })
+  // componentWillReceiveProps = () => this.setState({ loading: false })
 
   render() {
     let { loading } = this.state
@@ -58,9 +66,8 @@ class ViewPost extends Component {
   }
 }
 
-const mapStateToProps = store => ({
-  store,
+const mapStateToProps = state => ({
+  post: state.Post.viewPost,
 })
-
-export default connect(mapStateToProps)(ViewPost)
+export default withRouter(connect(mapStateToProps)(ViewPost))
 export { ViewPost as PureViewPost }

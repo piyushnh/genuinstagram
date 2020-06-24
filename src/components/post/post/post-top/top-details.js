@@ -7,9 +7,9 @@ import AppLink from '../../../others/link/link'
 const PostTopDetails = ({ details }) => {
   let {
     user,
-    username,
-    firstname,
-    surname,
+    // username,
+    // firstname,
+    // surname,
     group_id,
     group_name,
     type,
@@ -23,9 +23,9 @@ const PostTopDetails = ({ details }) => {
       </div>
       <div className="p_i_1" style={{ top: type == 'group' ? -8 : 'inherit' }}>
         <AppLink
-          url={`/profile/${username}`}
-          title={username}
-          label={username}
+          url={`/profile/${user.username}`}
+          title={user.username}
+          label={user.username}
         />
         {type == 'group' && (
           <div className="its_grp_post">
@@ -40,7 +40,7 @@ const PostTopDetails = ({ details }) => {
           </div>
         )}
         <span className="p_i_1_title" title={location ? location : null}>
-          {location ? shortener(location, 35) : `${firstname} ${surname}`}
+          {location ? shortener(location, 35) : `${user.first_name} ${user.last_name}`}
         </span>
       </div>
     </Fragment>
@@ -50,9 +50,9 @@ const PostTopDetails = ({ details }) => {
 PostTopDetails.propTypes = {
   details: PropTypes.shape({
     user: PropTypes.object.isRequired,
-    username: PropTypes.string.isRequired,
-    firstname: PropTypes.string.isRequired,
-    surname: PropTypes.string.isRequired,
+    // username: PropTypes.string.isRequired,
+    // firstname: PropTypes.string.isRequired,
+    // surname: PropTypes.string.isRequired,
     group_id: PropTypes.number,
     group_name: PropTypes.string,
     type: PropTypes.string.isRequired,

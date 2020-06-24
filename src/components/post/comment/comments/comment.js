@@ -7,6 +7,8 @@ import CommentOptions from './options/comment-options'
 import PropTypes from 'prop-types'
 import AppLink from '../../../others/link/link'
 import classNames from 'classnames'
+import ReactTimeAgo from 'react-time-ago'
+
 
 @connect()
 export default class Comment extends Component {
@@ -23,7 +25,7 @@ export default class Comment extends Component {
       comment_id,
       comment_by,
       comment_by_username,
-      type,
+      comment_type,
       commentSrc,
       comment_time,
       decrementComments,
@@ -35,20 +37,20 @@ export default class Comment extends Component {
         <div className={classNames('comments', { my_comment: Me(comment_by) })}>
           <img
             className="comments_avatar"
-            src={`/users/${comment_by}/avatar.jpg`}
+            src={comment_by.profile_picture}
           />
 
           <div className="comments_content">
             <AppLink
-              url={`/profile/${comment_by_username}`}
+              url={`/profile/${comment_by.username}`}
               className="comments_user"
-              label={comment_by_username}
+              label={comment_by.username}
             />
 
-            <CommentType type={type} text={text} commentSrc={commentSrc} />
+            <CommentType type={comment_type} text={text} commentSrc={commentSrc} />
 
             <div className="comments_bottom">
-              <span className="comments_time">{TimeAgo(comment_time)}</span>
+              <span className="comments_time"><ReactTimeAgo date={comment_time}/></span>
             </div>
 
             <CommentOptions
@@ -56,7 +58,7 @@ export default class Comment extends Component {
                 comment_id,
                 comment_by,
                 text,
-                type,
+                comment_type,
                 commentSrc,
               }}
               decrementComments={decrementComments}
@@ -77,6 +79,6 @@ Comment.propTypes = {
   post_id:PropTypes.string.isRequired,
   commentSrc: PropTypes.string,
   text: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'sticker', 'image']),
+  comment_type: PropTypes.oneOf(['text', 'sticker', 'image']),
   decrementComments: PropTypes.func.isRequired,
 }
