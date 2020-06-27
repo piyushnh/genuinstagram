@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import Title from '../others/title'
+import { withRouter } from "react-router";
 import { connect } from 'react-redux'
 import {
   forProfile,
@@ -16,11 +17,21 @@ import Nothing from '../others/nothing'
 import ProfileRoutes from './profile-routes'
 import { getUnreadMessages } from '../../store/actions/message'
 import IsLoading from '../others/isLoading'
+import {getUserProfile} from '../../store/actions/user'
 
 class Profile extends Component {
-  state = {
-    loading: true,
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      loading: true,
+    }
+
+    this.props.dispatch(getUserProfile(this.props.match.params.username))
   }
+
+
+
 
   inv_user = () => this.props.history.push('/error/user')
 
@@ -32,20 +43,21 @@ class Profile extends Component {
       dispatch,
     } = this.props
     forProfile({ username, dispatch, invalidUser: this.inv_user })
-    dispatch(getUnreadNotifications())
-    dispatch(getUnreadMessages())
+    this.setState({ loading: false })
+
+    // dispatch(getUnreadNotifications())
+    // dispatch(getUnreadMessages())
   }
 
-  componentWillReceiveProps = ({ dispatch, match }) => {
-    if (this.props.match.url != match.url) {
-      forProfile({
-        dispatch,
-        username: match.params.username,
-        invalidUser: this.inv_user,
-      })
-    }
-    this.setState({ loading: false })
-  }
+  // componentWillReceiveProps = ({ dispatch, match }) => {
+  //   if (this.props.match.url != match.url) {
+  //     forProfile({
+  //       dispatch,
+  //       username: match.params.username,
+  //       invalidUser: this.inv_user,
+  //     })
+  //   }
+  // }
 
   render() {
     let { loading } = this.state
@@ -58,7 +70,8 @@ class Profile extends Component {
       ud: { id, firstname, surname, account_type },
       mutuals,
     } = this.props
-    let notPrivate = !isPrivate(id, isFollowing, account_type)
+    // let notPrivate = !isPrivate(id, isFollowing, account_type)
+    let notPrivate = true
 
     return (
       <div>
@@ -67,34 +80,21 @@ class Profile extends Component {
           desc={`Connect with ${username}'s profile`}
         />
 
-        <div
+        {/*<div
           className="profile-data"
           id="profile-data"
           data-get-username={username}
           data-getid={id}
-        />
+        />*/}
 
         <IsLoading loading={loading} when="page" />
 
         <FadeIn duration="300ms" className={cLoading(loading)}>
           <Banner />
-          {notPrivate || isAdmin() ? (
             <div>
               <ProfileNav url={url} user={id} />
               <ProfileRoutes url={url} param={username} />
             </div>
-          ) : (
-            <div style={{ marginTop: 85 }}>
-              <Nothing
-                mssg={`Account is private. Follow to connect with ${username}!!`}
-                secondMssg={
-                  mutuals.length != 0
-                    ? humanReadable(mutuals.length, 'mutual follower')
-                    : ''
-                }
-              />
-            </div>
-          )}
         </FadeIn>
       </div>
     )
@@ -107,5 +107,5 @@ const mapStateToProps = store => ({
   isFollowing: store.Follow.isFollowing,
 })
 
-export default connect(mapStateToProps)(Profile)
+export default withRouter(connect(mapStateToProps)(Profile))
 export { Profile as PureProfile }

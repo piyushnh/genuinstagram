@@ -5,7 +5,7 @@ import Title from '../others/title'
 import { getUnreadNotifications } from '../../store/actions/notification'
 import { connect } from 'react-redux'
 import { getTimeline } from '../../store/actions/post'
-import { getProfile } from '../../store/actions/user'
+import { getCurrentProfile } from '../../store/actions/user'
 import Suggested from '../others/suggested/suggested'
 import CreateGroup from '../group/create-group/create-group'
 import PostItTeaser from '../post/post-it/post-it-teaser'
@@ -20,8 +20,9 @@ class Home extends Component {
 
   componentDidMount = () => {
     let { dispatch } = this.props
-    dispatch(getTimeline())
-    dispatch(getProfile())
+
+
+    dispatch(getCurrentProfile())
 
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())
@@ -30,6 +31,10 @@ class Home extends Component {
       {
         this.setState({ loading: false })
       }
+    else{
+     dispatch(getTimeline())
+      
+    }
   }
 
   // componentWillReceiveProps = () => this.setState({ loading: false })

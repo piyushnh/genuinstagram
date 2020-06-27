@@ -40,7 +40,7 @@ const PostTopDetails = ({ details }) => {
           </div>
         )}
         <span className="p_i_1_title" title={location ? location : null}>
-          {location ? shortener(location, 35) : `${user.first_name} ${user.last_name}`}
+          {location ? shortener(location, 35) : `${user.firstname} ${user.surname}`}
         </span>
       </div>
     </Fragment>

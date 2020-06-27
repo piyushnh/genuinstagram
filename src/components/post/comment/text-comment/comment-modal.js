@@ -9,8 +9,19 @@ import TextArea from '../../../others/input/textArea'
 import Overlay from '../../../others/overlay'
 import { number, func, string } from 'prop-types'
 import PropTypes from 'prop-types';
+import {addComment} from '../../../../store/actions/post'
+import Notify from 'handy-notification'
 
-@connect()
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    postComment: (post_id, text) => dispatch(addComment(post_id, text)),
+    
+
+  }
+}
+
+@connect(null, mapDispatchToProps)
 export default class TextCommentModal extends Component {
   state = {
     text: '',
@@ -21,13 +32,27 @@ export default class TextCommentModal extends Component {
   comment = async e => {
     e.preventDefault()
     let { text } = this.state
-    let { back, incrementComments, ...rest } = this.props
-    textComment({
-      text,
-      ...rest,
-      done: () => incrementComments(),
-    })
-    back()
+    let { back, incrementComments, addCommentToTop,post, ...rest } = this.props
+    // textComment({
+    //   text,
+    //   ...rest,
+    //   done: () => incrementComments(),
+    // })
+
+    let result =await this.props.postComment(post, text)
+
+    const {success, comment} = result
+
+    if (success) {
+      incrementComments()
+      addCommentToTop(comment)
+      back()
+      Notify({
+          value: 'Your comment is posted'
+        })
+
+    }
+    // back()
   }
 
   render() {
@@ -81,5 +106,6 @@ TextCommentModal.propTypes = {
   postOwner: PropTypes.object.isRequired,
   back: func.isRequired,
   incrementComments: func.isRequired,
+  addCommentToTop: func.isRequired,
   when: string.isRequired,
 }

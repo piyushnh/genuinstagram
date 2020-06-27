@@ -6,6 +6,7 @@ import BannerAvatar from './avatar'
 import BannerInfo from './info'
 import BannerTags from './tags/tags'
 import BannerFollow from './follow'
+import BannerFriend from './friend'
 import BannerTopOptions from './top-options/top-options'
 
 const Banner = () => (
@@ -13,11 +14,12 @@ const Banner = () => (
     <div className="pro_top">
       <BannerTopOptions />
       <BannerFollow />
+      <BannerFriend />
     </div>
 
     <BannerAvatar />
     <BannerInfo />
-    <BannerTags />
+    {/*<BannerTags />*/}
 
     <hr />
 

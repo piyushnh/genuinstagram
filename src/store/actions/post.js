@@ -157,8 +157,8 @@ export const getTimeline = () => {
           const {post} = activity
           let modifiedPost = {
             username: post.user.username,
-            firstname:post.user.first_name,
-            surname: post.user.last_name,
+            firstname:post.user.firstname,
+            surname: post.user.surname,
             imgSrc: post.image,
             type: 'user',
             filter: '',
@@ -255,9 +255,6 @@ export const  addPost = (postData) => {
 export const  getPost = (postId) => {
    return (dispatch, getState) => {
    
-
-
-
     return postService.getPost(postId).then((result) => {
       // Send email verification successful.
       if (result.success)
@@ -281,9 +278,52 @@ export const  getPost = (postId) => {
         Notify({
           value: 'Something went wrong'
         })
+      })
+  }
+}
+
+export const  addComment = (postId, text) => {
+   return (dispatch, getState) => {
+   
+
+
+
+    return postService.addComment(postId, text).then((result) => {
+      // Send email verification successful.
+      if (result.success)
+      {
+        
+        const commentData = result.data;
+
+
+        //  dispatch({ type: 'GET_POST' , payload: postData })
+
+         return {success: true, comment: commentData}
+      }
+      else {
+        Notify({
+          value: result.mssg
+        })
+
+         return {success: false, comment: null}
+
+      }
+     
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+        Notify({
+          value: 'Something went wrong'
+        })
+
+         return {success: false, comment: null}
+
 
 
       })
   }
 }
+
+
 

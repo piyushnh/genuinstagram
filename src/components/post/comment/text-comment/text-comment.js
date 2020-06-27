@@ -11,7 +11,7 @@ export default class TextComment extends Component {
     let { comment } = this.state
     let {
       postDetails: { post_id, user, when },
-      incrementComments,
+      incrementComments,addCommentToTop
     } = this.props
 
     return (
@@ -29,6 +29,7 @@ export default class TextComment extends Component {
             postOwner={user}
             back={() => this.setState({ comment: false })}
             incrementComments={incrementComments}
+            addCommentToTop={addCommentToTop}
             when={when}
           />
         )}
@@ -44,4 +45,5 @@ TextComment.propTypes = {
     when: PropTypes.string.isRequired,
   }).isRequired,
   incrementComments: PropTypes.func.isRequired,
+  addCommentToTop: PropTypes.func.isRequired,
 }

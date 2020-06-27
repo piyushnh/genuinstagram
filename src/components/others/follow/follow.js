@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { follow } from '../../../utils/user-interact-utils'
 import { shape, number, string, func, bool } from 'prop-types'
 import { connect } from 'react-redux'
+import{followUser} from'../../../store/actions/friend'
 import PrimaryButton from '../button/primary-btn'
 
 /**
@@ -12,31 +13,38 @@ import PrimaryButton from '../button/primary-btn'
 
 const Follow = ({
   userDetails,
-  followed,
-  updateFollowings,
-  updateFollowers,
+  // followed,
+  // updateFollowings,
+  // updateFollowers,
   dispatch,
 }) => {
-  let { user, username, firstname, surname } = userDetails
+  let { username } = userDetails
 
-  let followUser = e => {
+  const [loading, setLoading] = useState(false);
+
+  let onFollowUser = async e => {
     e.preventDefault()
-    let obj = {
-      user,
-      username,
-      firstname,
-      surname,
-      dispatch,
-      update_followings: updateFollowings,
-      update_followers: updateFollowers,
-      done: () => followed(),
-    }
-    follow(obj)
+    // let obj = {
+    //   user,
+    //   username,
+    //   firstname,
+    //   surname,
+    //   dispatch,
+    //   update_followings: updateFollowings,
+    //   update_followers: updateFollowers,
+    //   done: () => followed(),
+    // }
+    // follow(obj)
+
+    setLoading(true)
+    await dispatch(followUser(username))
+    setLoading(false)
+
   }
 
   return (
     <Fragment>
-      <PrimaryButton label="Follow" onClick={followUser} extraClass="follow" />
+      <PrimaryButton label="Follow" onClick={onFollowUser} extraClass="follow" isLoading = {loading}/>
     </Fragment>
   )
 }
@@ -53,7 +61,7 @@ Follow.propTypes = {
     firstname: string,
     surname: string,
   }).isRequired,
-  followed: func.isRequired,
+  // followed: func.isRequired,
   updateFollowings: bool,
   updateFollowers: bool,
 }

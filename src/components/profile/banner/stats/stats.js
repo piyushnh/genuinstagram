@@ -24,7 +24,7 @@ const BannerStats = props => {
       ) : (
         <BannerStat statType="favourites" statValue={favourites} />
       )}
-      <BannerStat disabled statType="profile views" statValue={profile_views} />
+      {/*<BannerStat disabled statType="profile views" statValue={profile_views} />*/}
     </div>
   )
 }

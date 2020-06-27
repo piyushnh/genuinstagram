@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import { string, func, bool, oneOfType } from 'prop-types'
 import classNames from 'classnames'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const PrimaryButton = ({ label, onClick, extraClass, disabled, ...props }) => {
+const PrimaryButton = ({ label, onClick, extraClass, disabled, ...props, isLoading  }) => {
   let disabledClass = disabled ? 'a_disabled' : ''
 
   return (
@@ -13,7 +14,11 @@ const PrimaryButton = ({ label, onClick, extraClass, disabled, ...props }) => {
         onClick={onClick}
         {...props}
       >
-        {typeof label == 'function' ? label() : label}
+      {
+        isLoading ? <CircularProgress size={'1em'} /> :
+        (typeof label == 'function' ? label() : label)
+
+      }
       </a>
     </Fragment>
   )

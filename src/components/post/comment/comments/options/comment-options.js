@@ -26,7 +26,7 @@ class CommentTools extends Component {
 
     return (
       <Fragment>
-        {(Me(comment_by) || isAdmin()) && (
+        {(this.props.current_user.username == this.props.post.user.username || isAdmin()) && (
           <span
             className="toggle_options"
             data-tip="Options"
@@ -36,7 +36,7 @@ class CommentTools extends Component {
           </span>
         )}
 
-        {(Me(comment_by) || isAdmin()) &&
+        {(this.props.current_user.username == this.props.post.user.username || isAdmin()) &&
           showOptions && (
             <div className="options comments_options">
               <ul>
@@ -72,5 +72,10 @@ CommentTools.propTypes = {
   updateCommentText: PropTypes.func.isRequired,
 }
 
-export default connect()(CommentTools)
+const mapStateToProps = state => ({
+  current_user: state.User.user_details,
+  post: state.Post.viewPost
+})
+
+export default connect(mapStateToProps)(CommentTools)
 export { CommentTools as PureCommentTools }

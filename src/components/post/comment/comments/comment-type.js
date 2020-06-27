@@ -12,10 +12,10 @@ const CommentType = ({ type, text, commentSrc }) => {
   return (
     <Fragment>
       {// if no comment
-      type == 'TEXT' && !text ? (
+      type.toLowerCase() == 'text' && !text ? (
         <span style={noComment}>Empty comment</span>
       ) : // if text comment
-      type == 'TEXT' ? (
+      type.toLowerCase() == 'text' ? (
         <p className="ce">
           <ToTags str={text} />
         </p>

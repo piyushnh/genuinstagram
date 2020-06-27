@@ -29,7 +29,7 @@ export const onGoogleLogin = () => {
           value: 'Welcome!'
         })
         const user = result.data.user
-        dispatch(login(user.user_id, user.username, result.data.token, user.first_name, user.last_name,
+        dispatch(login(user.user_id, user.username, result.data.token, user.firstname, user.last_name,
          user.email,  true))
         dispatch(push('/'))
       }

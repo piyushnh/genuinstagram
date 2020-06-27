@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router'
 import Loading from '../components/others/loading'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "./theme";
 
 

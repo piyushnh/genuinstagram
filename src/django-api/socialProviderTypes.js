@@ -9,5 +9,6 @@ export const SocialProviderTypes = {
   AuthorizeService: 'AuthorizeService',
   PostService: 'PostService',
   UserService: 'UserService',
+  FriendService: 'FriendService',
 
 }

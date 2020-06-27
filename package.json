@@ -26,7 +26,6 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.9.14",
     "@types/react-loadable": "^5.5.3",
     "animate-components": "^1.4.8",
     "axios": "^0.19.2",

@@ -11,8 +11,15 @@ export default (state = InitialState, action) => {
     case 'GET_USER_DETAILS':
       return {
         ...state,
-        user_details: py.details,
-        tags: py.tags,
+        user_details: py
+        // tags: py.tags,
+      }
+      break
+    case 'GET_CURRENT_PROFILE':
+      return {
+        ...state,
+        current_profile: py
+        // tags: py.tags,
       }
       break
 
@@ -26,6 +33,20 @@ export default (state = InitialState, action) => {
 
     case 'GET_MUTUAL_USERS':
       return { ...state, mutualUsers: py }
+      break
+    case 'IS_FOLLOWING_TOGGLE':
+      return {
+        ...state,
+        user_details: {...state.user_details, isFollowing: py}
+        // tags: py.tags,
+      }
+      break
+    case 'CHANGE_FRIEND_STATUS':
+      return {
+        ...state,
+        user_details: {...state.user_details, friendshipStatus: py}
+        // tags: py.tags,
+      }
       break
   }
 

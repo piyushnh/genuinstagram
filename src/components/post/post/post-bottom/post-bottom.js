@@ -11,6 +11,7 @@ import AppLink from '../../../others/link/link'
 class PostBottom extends Component {
   state = {
     comments_count: 0,
+    postDetails:this.props.postDetails
   }
 
   componentDidMount = () =>
@@ -23,17 +24,27 @@ class PostBottom extends Component {
       comments_count: ++this.state.comments_count,
     })
 
+  addCommentToTop = (comment) => {
+    const postDetails = this.state.postDetails
+    const comments = postDetails.comments
+    comments.unshift(comment)
+      this.setState({
+      postDetails: {...postDetails, comments:comments},
+    })
+  }
   render() {
     let { comments_count } = this.state
     let {
-      postDetails,
-      postDetails: { post_id, when, comments },
+      
       session,
     } = this.props
+    let {postDetails,
+      postDetails: { post_id, when, comments }} = this.state
 
     let childProps = {
       postDetails,
       incrementComments: this.incrementComments,
+      addCommentToTop: this.addCommentToTop,
     }
 
     return (

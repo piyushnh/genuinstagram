@@ -100,11 +100,6 @@ export class PostService {
 
     try {
 
-
-
-
-
-
       const result = await this.httpService.getWithAuth(`post/getPost/${postId}`)
       if (result.status === 200) {
         return {
@@ -125,8 +120,32 @@ export class PostService {
       console.log(error)
       throw error
     }
+  }
 
+  addComment = async (postId, text) => {
 
+    try {
+      const payLoad = { text: text }
+      const result = await this.httpService.postWithAuth(`post/addComment/${postId}/`, payLoad)
+      if (result.status === 200) {
+        return {
+          success: true,
+          data: result.data
+        }
+      }
+      else {
+        return {
+          mssg: 'Unable to post',
+          success: false,
+          data: null
+        }
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
   }
 
 
