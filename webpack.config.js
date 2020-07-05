@@ -3,7 +3,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const chalk = require('chalk')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: ['react-hot-loader/patch','./src/main.js'],
   output: {
     path: join(__dirname, '/dist/js/'),
     filename: 'bundle.js',
@@ -14,7 +14,7 @@ module.exports = {
   },
     devServer: {
       contentBase: './dist',
-    hot: true,
+    // hot: true,
     },
   module: {
     rules: [

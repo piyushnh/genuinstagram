@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "./node_modules/.bin/nodemon app.js",
-    "dev": "./node_modules/.bin/webpack -d --watch",
+    "dev": "webpack-dev-server --hot --inline",
     "prod": "./node_modules/.bin/webpack -p --watch",
     "env": "./node_modules/.bin/handy-client-env",
     "test": "jest",
@@ -61,6 +61,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.0",
+    "react-hot-loader": "^4.12.21",
     "react-loadable": "^5.5.0",
     "react-photo-gallery": "^6.0.22",
     "react-redux": "^7.2.0",

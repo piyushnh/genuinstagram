@@ -9,9 +9,13 @@
     "transform-class-properties",
     "transform-decorators-legacy",
     "transform-react-jsx-source",
-    [ "transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }]
+    "react-hot-loader/babel",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ]
 }

@@ -2,6 +2,7 @@
  * @author Faiyaz Shaikh <www.shtakkar@gmail.com>
  * GitHub repo: https://github.com/yTakkar/React-Instagram-Clone-2.0
  */
+import { hot } from 'react-hot-loader/root';
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -41,5 +42,5 @@ const mapStateToProps = store => ({
   unreadMessages: store.Message.unreadMessages,
 })
 
-export default connect(mapStateToProps)(App)
+export default hot(connect(mapStateToProps)(App))
 export { App as PureApp }

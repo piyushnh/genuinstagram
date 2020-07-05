@@ -76,14 +76,14 @@ export class FriendService {
       throw error
     }
   }
-  unfriendUser = async (userName, type) => {
+  friendActions = async (userName, type) => {
     let url;
 
     switch (type) {
 
       case "SEND_REQUEST": url = `friend/add/${userName}/`
         break;
-      case "ACCEPT_REQUEST": url = 'KJH'
+      case "ACCEPT_REQUEST": url = `friend/accept/${userName}/`
         break;
       case "CANCEL_REQUEST": url = `friend/cancel_request/${userName}/`
         break;
