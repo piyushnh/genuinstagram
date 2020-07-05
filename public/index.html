@@ -4,17 +4,16 @@
 <head>
   <base href="/" />
   <meta charset="utf-8">
-  <title>{{ options.title }} • Instagram</title>
+  <title> Instagram</title>
   <meta name="description"
-    content="Instagram lets you capture, follow, like and share world's moments in a better way and tell your story with photos, messages, posts and everything in between"
-    data-desc-src='hbs' />
+    content="Instagram lets you capture, follow, like and share world's moments in a better way and tell your story with photos, messages, posts and everything in between" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
     integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel='stylesheet' href="/styles/styles.css">
+  <!-- <link rel='stylesheet' href="/styles.css"> -->
 
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
@@ -40,9 +39,7 @@
   <div class="overlay-2"></div>
 
 
-  <div aria-hidden="true" class="data" id="data" data-session="{session.id}}" data-token="{{session.tokenId}}"
-    data-username="{{session.username}}" data-email-verified="{{session.email_verified}}" data-loggedin="{{loggedIn}}"
-    data-isadmin="{{session.isadmin}}"></div>
+
 
   <div id="root">
     <div class='preload'>
@@ -56,7 +53,7 @@
     </div>
   </div>
 
-  <script src="/dist/js/bundle.js"></script>
+  <script src="/bundle.js"></script>
 </body>
 
 </html>

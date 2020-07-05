@@ -23,7 +23,7 @@ const PostTopDetails = ({ details }) => {
       </div>
       <div className="p_i_1" style={{ top: type == 'group' ? -8 : 'inherit' }}>
         <AppLink
-          url={`/profile/${user.username}`}
+          url={`/profile/${user.username}/`}
           title={user.username}
           label={user.username}
         />
