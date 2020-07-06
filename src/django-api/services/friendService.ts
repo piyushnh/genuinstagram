@@ -81,15 +81,15 @@ export class FriendService {
 
     switch (type) {
 
-      case "SEND_REQUEST": url = `friend/add/${userName}/`
+      case "SEND_REQUEST": url = `friendship/friend/add/${userName}/`
         break;
-      case "ACCEPT_REQUEST": url = `friend/accept/${userName}/`
+      case "ACCEPT_REQUEST": url = `friendship/friend/accept/${userName}/`
         break;
-      case "CANCEL_REQUEST": url = `friend/cancel_request/${userName}/`
+      case "CANCEL_REQUEST": url = `friendship/friend/cancel_request/${userName}/`
         break;
       case "REJECT_REQUEST": url = ''
         break;
-      case "REMOVE_FRIEND": url = `friendship/friend/remove/${userName}/`
+      case "REMOVE_FRIEND": url = `friendship/friendship/friend/remove/${userName}/`
         break;
 
       // default:      return <h1>No project match</h1>

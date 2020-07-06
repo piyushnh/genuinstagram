@@ -1,7 +1,7 @@
 import React, {useState, Fragment} from 'react'
 import { Me } from '../../../utils/utils'
 import {isCurrentUser} from '../../../store/actions/user'
-import {unfriendUser} from '../../../store/actions/friend'
+import {friendActions} from '../../../store/actions/friend'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
@@ -35,6 +35,10 @@ const BannerFriend = ({ ud,  dispatch }) => {
 
   })
 
+  let [buttonData, setButtonData] = useState({
+    label: ''
+  })
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -45,10 +49,10 @@ const BannerFriend = ({ ud,  dispatch }) => {
 
   let agreeFunction = null;
 
-  const loadAction = async (action) => {
+  const loadAction = async (type) => {
     setOpen(false)
     setLoading(true)
-    await dispatch(action(username))
+    await dispatch(friendActions(username, type))
     setLoading(false)
   }
   const deleteFriendRequest = () => {
@@ -59,7 +63,7 @@ const BannerFriend = ({ ud,  dispatch }) => {
     setDialogData({
       dialogText: `Don't add friends like it's Facebook:) Is this a person you'd like to share
        the real you with?`,
-      agreeFunction: () => {loadAction(friendUser)}
+      agreeFunction: () => {loadAction( 'SEND_REQUEST')}
     })
   }
   const acceptFriendRequest = () => {}

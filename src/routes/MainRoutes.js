@@ -103,21 +103,21 @@ const AppRoutes = () => (
     <Switch>
     
         <PrivateRoute path="/" exact component={Home} layout={MainLayout}/>
-        <PrivateRoute path="/profile/:username/" component={Profile} layout={MainLayout}/>
-        <PrivateRoute path="/error/:what/" component={Error} layout={MainLayout}/>
-        <PrivateRoute path="/email-verification/:is/" component={EmailVerification} layout={MainLayout}/>
-        <PrivateRoute path="/notifications/" component={Notifications} layout={MainLayout}/>
-        <PrivateRoute path="/edit-profile/" component={EditProfile} layout={MainLayout}/>
-        <PrivateRoute path="/post/:post_id/" component={ViewPost} layout={MainLayout}/>
-        <PrivateRoute path="/explore/" component={Explore} layout={MainLayout}/>
-        <PrivateRoute path="/settings/" component={Settings} layout={MainLayout}/>
-        <PrivateRoute path="/group/:grp_id/" component={Group} layout={MainLayout}/>
-        <PrivateRoute path="/messages/" component={Messages} layout={MainLayout}/>
-        <PrivateRoute path="/hashtag/:hashtag/" component={Hashtag} layout={MainLayout}/>
-        <PrivateRoute path="/admin-login/" component={AdminLogin} layout={MainLayout}/>
-        <PrivateRoute path="/is-admin/" component={IsAdmin} layout={MainLayout}/>
+        <PrivateRoute path="/profile/:username" component={Profile} layout={MainLayout}/>
+        <PrivateRoute path="/error/:what" component={Error} layout={MainLayout}/>
+        <PrivateRoute path="/email-verification/:is" component={EmailVerification} layout={MainLayout}/>
+        <PrivateRoute path="/notifications" component={Notifications} layout={MainLayout}/>
+        <PrivateRoute path="/edit-profile" component={EditProfile} layout={MainLayout}/>
+        <PrivateRoute path="/post/:post_id" component={ViewPost} layout={MainLayout}/>
+        <PrivateRoute path="/explore" component={Explore} layout={MainLayout}/>
+        <PrivateRoute path="/settings" component={Settings} layout={MainLayout}/>
+        <PrivateRoute path="/group/:grp_id" component={Group} layout={MainLayout}/>
+        <PrivateRoute path="/messages" component={Messages} layout={MainLayout}/>
+        <PrivateRoute path="/hashtag/:hashtag" component={Hashtag} layout={MainLayout}/>
+        <PrivateRoute path="/admin-login" component={AdminLogin} layout={MainLayout}/>
+        <PrivateRoute path="/is-admin" component={IsAdmin} layout={MainLayout}/>
       
-      <PublicRoute path="/react-login/" component={Login} />
+      <PublicRoute path="/react-login" component={Login} />
 
 
 

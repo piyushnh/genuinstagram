@@ -38,7 +38,7 @@ const Unfollow = ({
   return (
     <Fragment>
       <PrimaryButton
-        label="Unfollowuser"
+        label="Unfollows"
         onClick={onUnfollowUser}
         extraClass="unfollow"
         isLoading = {loading}

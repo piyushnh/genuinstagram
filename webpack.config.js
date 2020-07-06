@@ -14,7 +14,7 @@ module.exports = {
 //   html: "./public/index.html",
 // },
   output: {
-    path: join(__dirname, '/public/js/'),
+    path: join(__dirname, '/dist/js'),
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -26,8 +26,10 @@ module.exports = {
       contentBase: join(__dirname, '/public'),
     // hot: true,
     historyApiFallback: true,
+    port:3000
     // disableHostCheck: true
     },
+    devtool: "source-map",
   module: {
     rules: [
       {
