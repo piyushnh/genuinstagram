@@ -128,7 +128,7 @@ export const  friendActions = (username, actionType) => {
       // Send email verification successful.
       if (result.success)
       {
-         switch (type) {
+         switch (actionType) {
 
       case "SEND_REQUEST": dispatch(changeFriendshipStatus('REQUEST_SENT'))
         break;

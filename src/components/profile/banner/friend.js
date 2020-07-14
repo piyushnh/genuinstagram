@@ -55,9 +55,7 @@ const BannerFriend = ({ ud,  dispatch }) => {
     await dispatch(friendActions(username, type))
     setLoading(false)
   }
-  const deleteFriendRequest = () => {
-    
-  }
+  
   const sendFriendRequest = () => {
     setOpen(true)
     setDialogData({
@@ -66,12 +64,19 @@ const BannerFriend = ({ ud,  dispatch }) => {
       agreeFunction: () => {loadAction( 'SEND_REQUEST')}
     })
   }
+  const cancelFriendRequest = () => {
+    setOpen(true)
+    setDialogData({
+      dialogText: `You sure about this buddy?`,
+      agreeFunction: () => {loadAction( 'CANCEL_REQUEST')}
+    })
+  }
   const acceptFriendRequest = () => {}
   const deleteFriendship = () => {
     setOpen(true)
     setDialogData({
       dialogText: `Are you sure you want to unfriend @${username}?`,
-      agreeFunction: () => {loadAction(unfriendUser)}
+      agreeFunction: () => {loadAction('REMOVE_FRIEND')}
     })
   
   }
@@ -88,7 +93,7 @@ const BannerFriend = ({ ud,  dispatch }) => {
                        startIcon = <PersonAddIcon />
                        break;
         case "REQUEST_SENT":   label='Request Sent'
-                       action = deleteFriendRequest
+                       action = cancelFriendRequest
                        startIcon = <PersonAddDisabledIcon />
                        break;
         case "REQUEST_RECEIVED": label='Accept Request'

@@ -89,7 +89,7 @@ export class FriendService {
         break;
       case "REJECT_REQUEST": url = ''
         break;
-      case "REMOVE_FRIEND": url = `friendship/friendship/friend/remove/${userName}/`
+      case "REMOVE_FRIEND": url = `friendship/friend/remove/${userName}/`
         break;
 
       // default:      return <h1>No project match</h1>
@@ -105,7 +105,7 @@ export class FriendService {
       }
       else {
         return {
-          mssg: 'Sorry! Unable to unfollow the user',
+          mssg: 'Sorry! Unable to finish action',
           success: false,
           data: null
         }

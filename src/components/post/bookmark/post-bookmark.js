@@ -1,33 +1,40 @@
 import React, { Component, Fragment } from 'react'
 import * as PostUtils from '../../../utils/post-utils'
-import { post } from 'axios'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import MaterialIcon from '../../others/icons/material-icon'
+import {toggleBookmark} from '../../../store/actions/post'
 
 class PostBookmark extends Component {
-  state = {
-    bookmarked: false,
-  }
 
-  componentDidMount = async () => {
-    let {
-        postDetails: { post_id },
-      } = this.props,
-      { data: bookmarked } = await post('/api/bookmarked-or-not', {
-        post: post_id,
-      })
-    this.setState({ bookmarked })
-  }
+  constructor(props)
+  {
+    super(props)
+    this.state = {
+        bookmarked: this.props.postDetails.bookmarked_or_not,
+      }
 
-  bookmark = async () => {
+    this.toggleBookmark = this.toggleBookmark.bind(this)
+  }
+  
+
+
+
+  toggleBookmark = async () => {
+
     let {
       postDetails: { post_id },
-    } = this.props
-    PostUtils.bookmark({
-      post_id,
-      done: () => this.setState({ bookmarked: true }),
-    })
+      dispatch
+    } = this.props;
+
+    const result = await dispatch(toggleBookmark(post_id, this.state.bookmarked))
+    
+    if (result)
+    {
+      this.setState((prevState) => ({
+        bookmarked: !prevState.bookmarked
+      }))
+    }
   }
 
   unbookmark = async () => {
@@ -55,7 +62,7 @@ class PostBookmark extends Component {
             <span
               className="p_bookmark undo_bookmark"
               data-tip="Undo bookmark"
-              onClick={this.unbookmark}
+              onClick={this.toggleBookmark}
             >
               <MaterialIcon icon="bookmark" />
             </span>
@@ -63,7 +70,7 @@ class PostBookmark extends Component {
             <span
               className="p_bookmark"
               data-tip="Bookmark"
-              onClick={this.bookmark}
+              onClick={this.toggleBookmark}
             >
               <MaterialIcon icon="bookmark_border" />
             </span>
@@ -74,12 +81,12 @@ class PostBookmark extends Component {
   }
 }
 
-PostBookmark.propTypes = {
-  postDetails: PropTypes.shape({
-    post_id:PropTypes.string.isRequired,
-    when: PropTypes.string.isRequired,
-  }).isRequired,
-}
+// PostBookmark.propTypes = {
+//   postDetails: PropTypes.shape({
+//     post_id:PropTypes.string.isRequired,
+//     when: PropTypes.string.isRequired,
+//   }).isRequired,
+// }
 
 const mapStateToProps = store => ({
   ud: store.User.user_details,

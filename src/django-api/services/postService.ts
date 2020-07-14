@@ -148,6 +148,32 @@ export class PostService {
     }
   }
 
+  toggleBookmark = async (postId, isBookmarked: boolean) => {
+
+    try {
+      const payLoad = { isBookmarked: isBookmarked }
+      const result = await this.httpService.postWithAuth(`post/toggleBookmark/${postId}/`, payLoad)
+      if (result.status === 200) {
+        return {
+          success: true,
+          data: result.data
+        }
+      }
+      else {
+        return {
+          mssg: 'Unable to bookmark',
+          success: false,
+          data: null
+        }
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
 
 }
 

@@ -3,10 +3,23 @@ import * as PostUtils from '../../../utils/post-utils'
 import { post } from 'axios'
 import PropTypes from 'prop-types'
 import MaterialIcon from '../../others/icons/material-icon'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
+import Slide from '@material-ui/core/Slide';
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default class PostLike extends Component {
   state = {
     liked: false,
+    open: false
   }
 
   componentDidMount = async () => {
@@ -17,7 +30,7 @@ export default class PostLike extends Component {
     await this.setState({ liked })
   }
 
-  like = async () => {
+  likeOld = async () => {
     let {
       postDetails: { post_id, user },
       incrementWhat,
@@ -30,6 +43,10 @@ export default class PostLike extends Component {
         incrementWhat('likes_count')
       },
     })
+  }
+
+  like = () => {
+    this.setState({open: true})
   }
 
   unlike = async () => {
@@ -46,8 +63,12 @@ export default class PostLike extends Component {
     })
   }
 
+  handleClose = () => {
+      this.setState({...this.state, open: false })
+    };
   render() {
-    let { liked } = this.state
+    // let { liked } = this.state
+    let { liked } = false
 
     return (
       <Fragment>
@@ -70,6 +91,27 @@ export default class PostLike extends Component {
             </span>
           )}
         </div>
+
+        <Dialog
+        open={this.state.open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={this.handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Hey there!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            {`Let's not measure our worth in likes, shall we?`}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
       </Fragment>
     )
   }

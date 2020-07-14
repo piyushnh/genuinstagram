@@ -24,6 +24,8 @@ export default {
     website: '',
     isOnline: false,
     lastOnline: '',
+    sentFriendRequestId: '',
+    receivedFriendRequestId: '',
   },
   current_profile: {
     id: null,

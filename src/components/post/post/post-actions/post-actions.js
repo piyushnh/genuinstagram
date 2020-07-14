@@ -24,7 +24,7 @@ export default class PostActions extends Component {
 
   render() {
     let {
-      postDetails: { post_id, user, when },
+      postDetails: { post_id, user, when, bookmarked_or_not },
     } = this.props
     let { likes_count, shares_count } = this.state
 
@@ -39,7 +39,7 @@ export default class PostActions extends Component {
         <div className="p_a">
           <div className="p_do">
             <PostLike {...childProps} />
-            <PostBookmark postDetails={{ post_id, when }} />
+            <PostBookmark postDetails={{ post_id, bookmarked_or_not }} />
             <PostShare {...childProps} />
           </div>
 
@@ -62,12 +62,13 @@ export default class PostActions extends Component {
   }
 }
 
-PostActions.propTypes = {
-  postDetails: shape({
-    post_id: string.isRequired,
-    // //user: number.isRequired,
-    when: string.isRequired,
-    likes_count: number.isRequired,
-    shares_count: number,
-  }).isRequired,
-}
+// PostActions.propTypes = {
+//   postDetails: shape({
+//     post_id: string.isRequired,
+//     // //user: number.isRequired,
+//     when: string.isRequired,
+//     bookmarked_or_not: Boolean,
+//     likes_count: number.isRequired,
+//     shares_count: number,
+//   }).isRequired,
+// }

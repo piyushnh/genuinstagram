@@ -154,18 +154,7 @@ export const getTimeline = () => {
         
         for (const index in data){
           let activity = data[index]
-          const {post} = activity
-          let modifiedPost = {
-            username: post.user.username,
-            firstname:post.user.firstname,
-            surname: post.user.surname,
-            imgSrc: post.image,
-            type: 'user',
-            filter: '',
-            ...post
-
-          }
-          feed.push(modifiedPost)
+          feed.push(activity.post)
         }
 
 
@@ -202,24 +191,9 @@ export const  addPost = (postData) => {
     payLoad.set('image', postData.targetFile);
     payLoad.set('description', postData.desc);
     payLoad.set('location', postData.location);
-    payLoad.set('privacy_type', 'FRIENDS');
+    payLoad.set('privacy_type', 'FOLLOWERS');
 
 
-    // imageData.append( 
-    //   "file", 
-    //   postData.targetFile, 
-    //   postData.targetFile.fileName
-    // ); 
-
-    // let payLoad = {
-    //     description: postData.desc,
-    //     image: postData.targetFile,
-    //     location: postData.location,
-    //     privacy_type: 'FRIENDS'
-
-
-
-    //   }
     return postService.addPost(payLoad).then((result) => {
       // Send email verification successful.
       if (result.success)
@@ -285,9 +259,6 @@ export const  getPost = (postId) => {
 export const  addComment = (postId, text) => {
    return (dispatch, getState) => {
    
-
-
-
     return postService.addComment(postId, text).then((result) => {
       // Send email verification successful.
       if (result.success)
@@ -318,6 +289,40 @@ export const  addComment = (postId, text) => {
         })
 
          return {success: false, comment: null}
+
+
+
+      })
+  }
+}
+
+export const  toggleBookmark = (postId, isBookmarked) => {
+   return (dispatch, getState) => {
+   
+    return postService.toggleBookmark(postId, isBookmarked).then((result) => {
+      // Send email verification successful.
+      if (result.success)
+      {
+        return true     
+      }
+      else {
+        Notify({
+          value: result.mssg
+        })
+
+         return false
+
+      }
+     
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+        Notify({
+          value: 'Something went wrong'
+        })
+
+         return false
 
 
 
