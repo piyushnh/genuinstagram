@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import End from '../others/end'
@@ -27,7 +28,7 @@ const Feed = ({ feed }) => {
         </div>
         </Fragment>
       ) : (
-        
+
       <div className="posts_div" style={{ marginTop: len == 0 ? 10 : 0 }}>
         <MapPosts posts={map_feed}  />
       </div>
