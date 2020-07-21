@@ -198,8 +198,7 @@ export const  addPost = (postData) => {
       // Send email verification successful.
       if (result.success)
       {
-        
-        
+       
 
         dispatch(push(`/post/${result.data.post_id}`))
       }
