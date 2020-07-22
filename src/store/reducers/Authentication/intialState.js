@@ -1,4 +1,3 @@
-import { uData } from '../../../utils/utils'
 
 export default {
 

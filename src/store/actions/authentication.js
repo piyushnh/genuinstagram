@@ -51,3 +51,37 @@ export const onGoogleLogin = () => {
       })
   }
 }
+
+export const onLogout = () => {
+   return (dispatch, getState) => {
+    // dispatch(globalActions.showNotificationRequest())
+
+    return authorizeService.logout().then((result) => {
+      // Send email verification successful.
+      if (result.success)
+      {
+        
+        dispatch({type:'LOGOUT', payload: {}})
+        dispatch(push('/'))
+        Notify({
+          value: 'Logged out successfully'
+        })
+      }
+      else {
+        Notify({
+          value: 'Something went wrong!'
+        })
+      }
+     
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+        Notify({
+          value: 'Something went wrong'
+        })
+
+
+      })
+  }
+}

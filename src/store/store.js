@@ -57,7 +57,18 @@ const persistConfig = {
   whitelist: ['User','Authentication' ],
 }
 
-const rootReducer = createRootReducer(history)
+const appReducer = createRootReducer(history)
+
+const rootReducer = (state, action) => {
+    if (action.type === 'LOGOUT') {
+        // for all keys defined in your persistConfig(s)
+        storage.removeItem('persist:root')
+        // storage.removeItem('persist:otherKey')
+
+        state = undefined;
+    }
+    return appReducer(state, action);
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

@@ -13,6 +13,12 @@ export default (state = InitialState, action) => {
         ...state,
         details: payload,
       }
+      // LOGOUT LOGIC IS IMPLEMENTED IN THE MAIL STORE FILE i.e. store.js
+    // case 'LOGOUT':
+    //   return {
+    //     ...state,
+    //     details: InitialState.details,
+    //   }
     break
 
    

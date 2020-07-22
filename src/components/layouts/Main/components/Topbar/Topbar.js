@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	AppBar,
@@ -14,6 +15,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
+import {onLogout} from '../../../../../store/actions/authentication' 
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -35,12 +37,16 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Topbar = props => {
+const Topbar = (props) => {
 	const { className, onSidebarOpen, ...rest } = props;
 
 	const classes = useStyles();
 
 	const [notifications] = useState([]);
+
+	const logout = () => {
+		props.dispatch(onLogout())
+	}
 
 	return (
 		<AppBar {...rest} className={clsx(classes.root, className)}>
@@ -70,7 +76,7 @@ const Topbar = props => {
 						<NotificationsIcon />
 					</Badge>
 				</IconButton>
-				<IconButton className={classes.signOutButton} color="inherit">
+				<IconButton className={classes.signOutButton} onClick={logout} color="inherit">
 					<InputIcon />
 				</IconButton>
 				{/* </Hidden> */}
@@ -84,4 +90,11 @@ Topbar.propTypes = {
 	onSidebarOpen: PropTypes.func
 };
 
-export default Topbar;
+const mapStateToProps = state => ({
+
+})
+
+
+
+
+export default connect(mapStateToProps)(Topbar)
