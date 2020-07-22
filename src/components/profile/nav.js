@@ -11,14 +11,14 @@ const ProfileNav = ({ url, user }) => {
     >
       <ul>
         <ProfileNavLink url={url} label="Posts" />
-        <ProfileNavLink url={`${url}/tagged`} label="Tagged" />
-        <ProfileNavLink url={`${url}/shared`} label="Shared" />
-        <ProfileNavLink url={`${url}/gallery`} label="Gallery" />
+        {/* <ProfileNavLink url={`${url}/tagged`} label="Tagged" /> */}
+        <ProfileNavLink url={`${url}/Recommended`} label="Recommended" />
+        {/* <ProfileNavLink url={`${url}/gallery`} label="Gallery" /> */}
         {Me(user) && (
           <ProfileNavLink url={`${url}/bookmarks`} label="Bookmarks" />
         )}
-        <ProfileNavLink url={`${url}/groups`} label="Groups" />
-        <ProfileNavLink url={`${url}/about`} label="About" />
+        {/* <ProfileNavLink url={`${url}/groups`} label="Groups" />
+        <ProfileNavLink url={`${url}/about`} label="About" /> */}
       </ul>
     </div>
   )

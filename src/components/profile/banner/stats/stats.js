@@ -19,11 +19,11 @@ const BannerStats = props => {
       <BannerStat disabled statType="posts" statValue={posts} />
       <BannerStat statType="followers" statValue={followers} />
       <BannerStat statType="followings" statValue={followings} />
-      {Me(id) ? (
+      {/* {Me(id) ? (
         <BannerStat statType="recommendations" statValue={recommendations} />
       ) : (
         <BannerStat statType="favourites" statValue={favourites} />
-      )}
+      )} */}
       {/*<BannerStat disabled statType="profile views" statValue={profile_views} />*/}
     </div>
   )
