@@ -1,5 +1,5 @@
 // POSTS
-.posts{
+.posts {
   position: relative;
   margin-top: 10px;
   padding: 12px 10px 10px 10px;
@@ -14,18 +14,18 @@
     font-size: 13px;
     color: $d_light;
 
-    & a{
+    & a {
       color: $dark;
       font-weight: bold;
       font-size: 14px;
       margin-left: 2px;
 
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
 
-    & span:last-of-type{
+    & span:last-of-type {
       position: absolute;
       right: 0px;
       color: $d_light;
@@ -33,13 +33,13 @@
 
   }
 
-  & .p_i{
+  & .p_i {
     display: flex;
 
-    & .p_i_img{
+    & .p_i_img {
       float: left;
 
-      & > img{
+      &>img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -52,29 +52,30 @@
       position: relative;
       left: 8px;
 
-      &::after{
+      &::after {
         content: "";
         clear: both;
         display: block;
       }
 
-      & > a, & .to_grp_name {
+      &>a,
+      & .to_grp_name {
         font-size: 14px;
         color: $dark;
         outline: none;
         font-weight: 600;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
 
-        &:focus{
+        &:focus {
           text-decoration: underline;
         }
       }
 
-      & span{
+      & span {
         font-size: 13px;
         color: $d_light;
         position: relative;
@@ -101,21 +102,21 @@
 
     }
 
-    & .p_i_2{
+    & .p_i_2 {
       position: absolute;
       right: 10px;
       color: $d_light;
       display: flex;
 
-      & .p_time{
+      & .p_time {
         position: relative;
         margin-right: 10px;
         margin-top: 1px;
       }
 
-      & div.p_h_opt{
+      & div.p_h_opt {
 
-        & .exp_p_menu{
+        & .exp_p_menu {
           position: relative;
           display: inline-block;
           height: 26px;
@@ -127,13 +128,13 @@
 
     }
 
-    & .p_options{
+    & .p_options {
       top: 48px;
       right: 7px;
       position: absolute;
       z-index: 2;
 
-      &::before{
+      &::before {
         content: "";
         background: $ff;
         width: 11px;
@@ -147,7 +148,7 @@
         z-index: -1;
       }
 
-      & a{
+      & a {
         font-size: 13px;
         padding: 4px 10px;
       }
@@ -170,7 +171,8 @@
         font-size: 14px;
       }
 
-      & .p_img{
+      & .p_img {
+        width: 100%;
         max-width: 468px;
         cursor: pointer;
       }
@@ -200,31 +202,31 @@
 
   }
 
-  & hr{
+  & hr {
     margin-top: 7px;
     border-top: 1px solid #f5eded;
 
-    &.img_d_hr{
+    &.img_d_hr {
       margin-top: 12px !important;
     }
 
   }
 
-  & .p_a{
+  & .p_a {
     position: relative;
     margin-top: 10px;
     display: flex;
 
-    & .p_do{
+    & .p_do {
       float: left;
 
-      & > div{
+      &>div {
         color: $d_light;
         position: relative;
         margin-right: 9px;
         display: inline-block;
 
-        & > span{
+        &>span {
           color: $d_light;
           position: relative;
           display: inline-block;
@@ -244,18 +246,18 @@
 
     }
 
-    & .p_did{
+    & .p_did {
       float: left;
       position: absolute;
       right: 0px;
 
-      &::after{
+      &::after {
         content: "";
         clear: both;
         display: block;
       }
 
-      & > span{
+      &>span {
         background: $second_border;
         padding: 5px 10px;
         text-align: center;
@@ -265,7 +267,7 @@
         cursor: pointer;
         margin-left: 7px;
 
-        &:hover{
+        &:hover {
           background: $fb;
           padding: 4px 9px;
           border: 1px solid $ee;
@@ -278,7 +280,7 @@
 
   }
 
-  & .p_comments{
+  & .p_comments {
     position: relative;
     display: block;
     margin-top: 10px;
@@ -289,14 +291,14 @@
     border: 1px solid $ee;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       background: $fb;
       border: 1px solid $ee;
     }
 
   }
 
-  & .p_cit{
+  & .p_cit {
     display: inline-block;
     position: relative;
     margin-top: 12px;
@@ -304,11 +306,11 @@
     color: $d_light;
     display: flex;
 
-    & .p_cit_img{
+    & .p_cit_img {
       position: relative;
       height: 40px;
 
-      & img{
+      & img {
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -316,7 +318,7 @@
       }
     }
 
-    & .p_cit_main{
+    & .p_cit_main {
       display: flex;
       position: relative;
       width: 100%;
@@ -336,7 +338,8 @@
         top: 7px;
         right: 3px;
 
-        & span, & label {
+        & span,
+        & label {
           display: inline-block;
           height: 24px;
           cursor: pointer;
@@ -362,27 +365,27 @@
   }
 
   // comments
-  & .comments_div{
+  & .comments_div {
     margin-top: 10px;
     position: relative;
 
-    & .comments{
+    & .comments {
       margin-top: 12px;
       position: relative;
 
-      & .comments_avatar{
+      & .comments_avatar {
         width: 30px;
         float: left;
         border-radius: 2px;
       }
 
-      & .comments_content{
+      & .comments_content {
         position: relative;
         display: inline-block;
         width: 90%;
         margin-left: 5px;
 
-        & a.comments_user{
+        & a.comments_user {
           color: $dark;
           font-weight: 600;
 
@@ -391,12 +394,12 @@
           }
         }
 
-        & p{
+        & p {
           display: block;
           word-wrap: break-word;
         }
 
-        & .comments_img{
+        & .comments_img {
           display: block;
           width: 200px;
           position: relative;
@@ -404,7 +407,7 @@
           cursor: pointer;
         }
 
-        & .comments_sticker{
+        & .comments_sticker {
           display: block;
           width: 64px;
           position: relative;
@@ -414,7 +417,7 @@
         & .comments_bottom {
           margin-top: 5px;
 
-          & .comments_time{
+          & .comments_time {
             margin-bottom: 5px;
             color: $d_light;
             font-size: 13px;
@@ -466,7 +469,7 @@
 
     }
 
-    & .my_comment::before{
+    & .my_comment::before {
       content: "";
       width: 2px;
       height: 31px;

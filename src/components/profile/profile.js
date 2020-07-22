@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import Title from '../others/title'
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import {
   forProfile,
@@ -17,11 +17,10 @@ import Nothing from '../others/nothing'
 import ProfileRoutes from './profile-routes'
 import { getUnreadMessages } from '../../store/actions/message'
 import IsLoading from '../others/isLoading'
-import {getUserProfile} from '../../store/actions/user'
+import { getUserProfile } from '../../store/actions/user'
 
 class Profile extends Component {
-  
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       loading: true,
@@ -29,9 +28,6 @@ class Profile extends Component {
 
     this.props.dispatch(getUserProfile(this.props.match.params.username))
   }
-
-
-
 
   inv_user = () => this.props.history.push('/error/user')
 
@@ -91,10 +87,10 @@ class Profile extends Component {
 
         <FadeIn duration="300ms" className={cLoading(loading)}>
           <Banner />
-            <div>
-              <ProfileNav url={url} user={id} />
-              <ProfileRoutes url={url} param={username} />
-            </div>
+          <div>
+            <ProfileNav url={url} user={id} />
+            {/* <ProfileRoutes url={url} param={username} /> */}
+          </div>
         </FadeIn>
       </div>
     )

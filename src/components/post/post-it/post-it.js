@@ -35,7 +35,7 @@ export default class PostIt extends Component {
       <div>
         <Overlay />
 
-        <div className="post" style={{ left: fileChanged ? '41%' : '50%' }}>
+        <div className="post" style={{ left: fileChanged ? '50%' : '50%' }}>
           <FadeIn duration="300ms">
             {/*fileChanged && <Filters />*/}
 
