@@ -30,7 +30,7 @@ export class PostService {
 
 
 
-  getTimeline = async () => {
+  getTimeline = async (lastItemId, pageSize) => {
 
     try {
 
@@ -38,7 +38,7 @@ export class PostService {
       // const result = await axios
       //     .post(`http://127.0.0.1:8000/auth/social/authenticate/`, payLoad)
 
-      const result = await this.httpService.getWithAuth(`post/getTimeline/`)
+      const result = await this.httpService.getWithAuth(`post/getTimeline/${lastItemId}/${pageSize}`)
       if (result.status === 200) {
         return {
           success: true,

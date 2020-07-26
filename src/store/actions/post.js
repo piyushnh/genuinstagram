@@ -143,23 +143,28 @@ export const getTimeline = () => {
    return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
 
-  
-    return postService.getTimeline().then((result) => {
+    let feed = getState().Post.feed
+    let {lastItemId, pageSize} = feed
+
+    return postService.getTimeline(lastItemId, pageSize).then((result) => {
       // Send email verification successful.
       if (result.success)
       {
         
         const data = result.data
-        let feed = []
+        const {timeline, hasMore} = data
+        let feedList = []
         
-        for (const index in data){
-          let activity = data[index]
-          feed.push(activity.post)
+        for (const index in timeline){
+          let activity = timeline[index]
+          feedList.push(activity.post)
         }
 
+        if (hasMore){
+          lastItemId += pageSize;
+        }
 
-
-        dispatch(getFeed(feed))
+        dispatch(getFeed({ feedList, hasMore,  lastItemId }))
         // dispatch(push('/'))
       }
       else {
@@ -185,13 +190,14 @@ export const  addPost = (postData) => {
    return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
     // console.log()
-
+    console.log(postData)
     const payLoad = new FormData();
 
     payLoad.set('image', postData.targetFile);
     payLoad.set('description', postData.desc);
     payLoad.set('location', postData.location);
-    payLoad.set('privacy_type', 'FOLLOWERS');
+    payLoad.set('privacyType', postData.privacyType);
+    payLoad.set('isDraft', postData.isDraft);
 
 
     return postService.addPost(payLoad).then((result) => {
@@ -199,8 +205,16 @@ export const  addPost = (postData) => {
       if (result.success)
       {
        
+        if (!postData.isDraft){
+          dispatch(push(`/post/${result.data.post_id}`))
 
-        dispatch(push(`/post/${result.data.post_id}`))
+        }
+        else{
+          Notify({
+          value: 'Saved to drafts'
+        })
+        }
+
       }
       else {
         Notify({

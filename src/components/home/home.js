@@ -26,7 +26,7 @@ class Home extends Component {
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())
 
-    if (this.props.feed.length !== 0) {
+    if (this.props.feed.list.length !== 0) {
       this.setState({ loading: false })
     } else {
       dispatch(getTimeline())

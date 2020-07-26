@@ -56,16 +56,16 @@ class PostBottom extends Component {
         />
         <div className="p_cit">
           <div className="p_cit_img">
-            <img src={`/users/${session}/avatar.jpg`} />
+            <img src={this.props.current_user.profile_picture} />
           </div>
 
           <div className="p_cit_main">
             <TextComment {...childProps} />
 
-            <div className="p_cit_tool">
+            {/*<div className="p_cit_tool">
               <StickerComment {...childProps} />
               <ImageComment {...childProps} />
-            </div>
+            </div>*/}
           </div>
         </div>
 
@@ -91,8 +91,8 @@ PostBottom.propTypes = {
   }).isRequired,
 }
 
-const mapStateToProps = store => ({
-  session: store.User.session.id,
+const mapStateToProps = state => ({
+  current_user: state.User.current_profile
 })
 
 export default connect(mapStateToProps)(PostBottom)

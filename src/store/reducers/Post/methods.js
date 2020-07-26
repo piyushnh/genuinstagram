@@ -5,6 +5,17 @@ export const addPost = (posts, post) => {
   return posts
 }
 
+export const addFeed = (feed, payLoad) => {
+
+  feed = {
+    ...feed,
+    list: feed.list.concat(payLoad.feedList),
+    lastItemId: payLoad.lastItemId,
+    hasMore: payLoad.hasMore
+  }
+  return feed
+}
+
 export const editPost = (posts, { post_id, description }) => {
   return posts.map(p => {
     if (p.post_id == post_id) {

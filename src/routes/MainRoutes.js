@@ -26,6 +26,7 @@ import AdminLogin from '../components/admin/admin-login'
 import IsAdmin from '../components/admin/is-admin'
 import Error from '../components/error/error'
 import Login from '../components/authentication/login'
+import AddPost from '../components/post/add-post/add-post'
 import { Main as MainLayout, Minimal as MinimalLayout } from "../components/layouts";
 
 
@@ -107,6 +108,7 @@ const AppRoutes = () => (
         <PrivateRoute path="/error/:what" component={Error} layout={MainLayout}/>
         <PrivateRoute path="/email-verification/:is" component={EmailVerification} layout={MainLayout}/>
         <PrivateRoute path="/notifications" component={Notifications} layout={MainLayout}/>
+        <PrivateRoute path="/add-post" component={AddPost} layout={MainLayout}/>
         <PrivateRoute path="/edit-profile" component={EditProfile} layout={MainLayout}/>
         <PrivateRoute path="/post/:post_id" component={ViewPost} layout={MainLayout}/>
         <PrivateRoute path="/explore" component={Explore} layout={MainLayout}/>
