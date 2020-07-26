@@ -12,6 +12,7 @@ import ModalBack from '../../../others/modal/modal-back'
 import ModalMiddle from '../../../others/modal/modal-middle'
 import IsLoading from '../../../others/isLoading'
 import Overlay from '../../../others/overlay'
+import ContactList from './friend-list'
 
 class Share extends Component {
   state = {
@@ -52,7 +53,6 @@ class Share extends Component {
     return (
       <Fragment>
         <Overlay />
-
         <div className="modal modal_big">
           <Title value="Share post" />
 
@@ -60,8 +60,9 @@ class Share extends Component {
             <ModalHeader title="Share post to" />
 
             <Scrollbars style={{ height: 450 }} className="modal_middle">
-              <IsLoading loading={loading} />
-              <ModalMiddle loading={loading} list={map_users} />
+              {/* <IsLoading loading={loading} /> */}
+              <ContactList style={{ width: '100%' }} />
+              {/* <ModalMiddle loading={loading} list={map_users} /> */}
             </Scrollbars>
 
             <div className="modal_bottom">

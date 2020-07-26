@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FadeIn } from 'animate-components'
 import Title from '../../others/title'
 import { connect } from 'react-redux'
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router'
 
 import { getPost } from '../../../store/actions/post'
 import { getUnreadNotifications } from '../../../store/actions/notification'
@@ -30,10 +30,9 @@ class ViewPost extends Component {
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())
 
-    if (this.props.post !== '')
-      {
-        this.setState({ loading: false })
-      }
+    if (this.props.post !== '') {
+      this.setState({ loading: false })
+    }
   }
 
   // componentWillReceiveProps = () => this.setState({ loading: false })

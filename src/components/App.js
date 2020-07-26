@@ -2,12 +2,12 @@
  * @author Faiyaz Shaikh <www.shtakkar@gmail.com>
  * GitHub repo: https://github.com/yTakkar/React-Instagram-Clone-2.0
  */
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader/root'
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { getUnreadNotifications } from '../store/actions/notification'
 import { getUnreadMessages } from '../store/actions/message'
 
@@ -27,12 +27,12 @@ class App extends Component {
     let { unreadNotifications, unreadMessages } = this.props
 
     return (
-        <div className="app">
-          <Header />
-          <NotiSpeak un={unreadNotifications} />
-          {/*<SideBar un={unreadNotifications} uc={unreadMessages} />*/}
-          <AppRoutes />
-        </div>
+      <div className="app">
+        {/* <Header /> */}
+        <NotiSpeak un={unreadNotifications} />
+        {/*<SideBar un={unreadNotifications} uc={unreadMessages} />*/}
+        <AppRoutes />
+      </div>
     )
   }
 }
