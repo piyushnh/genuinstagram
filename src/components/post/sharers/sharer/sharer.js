@@ -85,7 +85,7 @@ Sharer.propTypes = {
   share_to: PropTypes.number.isRequired,
   share_to_username: PropTypes.string.isRequired,
   share_time: PropTypes.string.isRequired,
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   isFollowing: PropTypes.bool.isRequired,
   decrementSharers: PropTypes.func.isRequired,
 }

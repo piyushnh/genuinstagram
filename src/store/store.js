@@ -23,6 +23,7 @@ import Post from './reducers/Post/Post'
 import Explore from './reducers/Explore/Explore'
 import Group from './reducers/Group/Group'
 import Message from './reducers/Message/Message'
+import Friend from './reducers/Friend/Friend'
 import Setting from './reducers/Setting/Setting'
 import Hashtag from './reducers/Hashtag/hashtag'
 import Authentication from './reducers/Authentication/authentication'
@@ -36,6 +37,7 @@ const createRootReducer = (history) => combineReducers({
   Notification,
   Post,
   Explore,
+  Friend,
   Group,
   Message,
   Setting,

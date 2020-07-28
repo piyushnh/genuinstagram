@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select Image', 'Add caption', 'Choose privacy'];
+  return ['Select Image', 'Add caption', 'Nominate Others', 'Choose privacy'];
 }
 
 function getStepContent(step) {
@@ -37,6 +37,8 @@ function getStepContent(step) {
     case 1:
       return 'Talk about why this moment is so meaningful to you, tell your story';
     case 2:
+      return `Nominate others to do the pep`;
+    case 3:
       return `Who do you want to post it to?`;
     default:
       return 'Unknown step';

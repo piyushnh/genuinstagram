@@ -85,7 +85,7 @@ LikeList.propTypes = {
   username: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   isFollowing: PropTypes.bool.isRequired,
   decrementLikes: PropTypes.func.isRequired,
 }

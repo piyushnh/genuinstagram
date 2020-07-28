@@ -84,7 +84,7 @@ class PostBottom extends Component {
 PostBottom.propTypes = {
   postDetails: shape({
     comments_count: number.isRequired,
-    post_id: string.isRequired,
+    post_id: number.isRequired,
     when: string.isRequired,
     //user: number.isRequired,
     comments: array,

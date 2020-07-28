@@ -74,7 +74,7 @@ class TagItems extends Component {
 }
 
 TagItems.propTypes = {
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   post_tag_id: PropTypes.number.isRequired,
   // user: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,

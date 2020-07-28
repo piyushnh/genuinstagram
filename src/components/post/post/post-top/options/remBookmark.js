@@ -29,7 +29,7 @@ const RemBookmarkAsAdmin = ({ post_id, user, when, dispatch }) => {
 }
 
 RemBookmarkAsAdmin.propTypes = {
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   // user: PropTypes.number.isRequired,
   when: PropTypes.string.isRequired,
 }

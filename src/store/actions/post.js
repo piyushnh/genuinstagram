@@ -152,7 +152,7 @@ export const getTimeline = () => {
       {
         
         const data = result.data
-        const {timeline, hasMore} = data
+        const {timeline, hasMore, lastItemId} = data
         let feedList = []
         
         for (const index in timeline){
@@ -160,9 +160,7 @@ export const getTimeline = () => {
           feedList.push(activity.post)
         }
 
-        if (hasMore){
-          lastItemId += pageSize;
-        }
+    
 
         dispatch(getFeed({ feedList, hasMore,  lastItemId }))
         // dispatch(push('/'))

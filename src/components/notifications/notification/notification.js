@@ -42,7 +42,7 @@ Notification.propTypes = {
   type: PropTypes.string.isRequired,
   // user: PropTypes.number.isRequired,
   user_username: PropTypes.string.isRequired,
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   group_id: PropTypes.number.isRequired,
   isFollowing: PropTypes.bool.isRequired,
 }

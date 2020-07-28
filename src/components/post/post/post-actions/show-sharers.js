@@ -35,6 +35,6 @@ export default class ShowSharers extends Component {
 ShowSharers.propTypes = {
   shares_count: number,
   decrementSharers: func.isRequired,
-  post_id: string.isRequired,
+  post_id: number.isRequired,
 
 }

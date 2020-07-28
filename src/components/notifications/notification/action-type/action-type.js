@@ -93,7 +93,7 @@ NotificationActionType.propTypes = {
     user_username: PropTypes.string.isRequired,
     notify_by: PropTypes.number.isRequired,
     notify_by_username: PropTypes.string.isRequired,
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     group_id: PropTypes.number.isRequired,
     isFollowing: PropTypes.bool.isRequired,
   }).isRequired,

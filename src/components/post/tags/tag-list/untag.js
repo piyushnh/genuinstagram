@@ -22,7 +22,7 @@ const Untag = ({ post_id, user, decrementTags, dispatch }) => {
 }
 
 Untag.propTypes = {
-  post_id: string.isRequired,
+  post_id: number.isRequired,
   //user: number.isRequired,
   decrementTags: func.isRequired,
 }
