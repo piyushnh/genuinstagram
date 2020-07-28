@@ -1,14 +1,14 @@
 @import 'filters';
 @import 'post-it';
 @import 'post';
-
+@import 'flist';
 // OTHER POST-RELATED STYLES
 
 // EDIT POST
-.edit_post{
+.edit_post {
   width: 380px;
 
-  & .e_p_bottom{
+  & .e_p_bottom {
     margin-top: 1px;
   }
 }
