@@ -9,7 +9,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getUnreadNotifications } from '../store/actions/notification'
-import { getUnreadMessages } from '../store/actions/message'
+import { getCurrentProfile } from '../store/actions/user'
+import { fetchFriendList } from '../store/actions/friend'
 
 import Header from './others/header/header'
 import NotiSpeak from './others/noti-speak'
@@ -21,6 +22,8 @@ class App extends Component {
     let { dispatch } = this.props
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())
+    dispatch(getCurrentProfile())
+    dispatch(fetchFriendList())
   }
 
   render() {

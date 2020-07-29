@@ -1,58 +1,93 @@
-import React from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import { connect } from 'react-redux'
-import Tooltip from '@material-ui/core/Tooltip';
-import HelpIcon from '@material-ui/icons/Help';
-import { CPP } from '../../../store/actions/post'
+import React, { Component } from 'react'
+// import './flist.scss'
+import {connect} from 'react-redux';
+import { CPP, addPost  } from '../../../store/actions/post'
+import NomineeList from './nomineeList'
+import Contact from './contact'
 
 
 
-function Nomination({dispatch, postIt}) {
-  // const [value, setValue] = React.useState('Friends');
+class Nomination extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+    displayedContacts: this.props.friendsList,
+  }
+  }
+  
+  
 
-  const {privacyType} = postIt
+  searchHandler = event => {
+    let searcjQery = event.target.value.toLowerCase(),
+      displayedContacts = this.props.friendsList.filter(el => {
+        let first_name = el.first_name.toLowerCase()
+        let last_name = el.last_name.toLowerCase()
+        let username = el.username.toLowerCase()
+        let searchValue = first_name+last_name+username
+        return searchValue.indexOf(searcjQery) !== -1
+      })
+    this.setState({
+      displayedContacts: displayedContacts,
+    })
+  }
 
-  const dp = (...args) => dispatch(CPP(...args))
+  dp = (...args) => this.props.dispatch(CPP(...args))
+
+  addNominee = (user) => {
+      let nomineeList = this.props.postIt.nomineeList
+
+      nomineeList.push(user)
+
+      this.dp('nomineeList', nomineeList)
+      
+  }
+
+  removeNominee = (user) => {
+      let nomineeList = this.props.postIt.nomineeList
+     
+      nomineeList = nomineeList.filter(function(item) {
+          return item !== user
+      })
+
+      this.dp('nomineeList', nomineeList)
 
 
-  const handleChange = (event) => {
-        dp('privacyType', event.target.value)
 
-  };
+  }
 
-  return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">Who do you want to post this to?</FormLabel>
-      <RadioGroup aria-label="privacy" name="privacy" value={privacyType} onChange={handleChange}>
-        <div>
-        <FormControlLabel value="FRIENDS" control={<Radio />} label="Friends" />
-        <Tooltip title="Visible to all friends" enterTouchDelay={50}	placement="right">
-              <HelpIcon />
-        </Tooltip>
-        </div>
-        <div>
-        <FormControlLabel value="FOLLOWERS" control={<Radio />} label="Followers" />
-        <Tooltip title="Visible to anyone who follows you or lands on your profile" leaveTouchDelay={3000} enterTouchDelay={50} placement="right">
-              <HelpIcon />
-        </Tooltip>
-        </div>
-        <div>
-        <FormControlLabel value="TO_JOURNAL" control={<Radio />} label="Save to Jornal" />
-        <Tooltip title="Saves post to your journal" enterTouchDelay={50} leaveTouchDelay={3000} placement="right">
-              <HelpIcon />
-        </Tooltip>
-        </div>
-      </RadioGroup>
-    </FormControl>
-  );
+  render() {
+    // let contacts = this.state.displayedContacts
+    let nomineeList = this.props.postIt.nomineeList
+    return (
+      <div className="holder">
+        <input type="text" className="search" onChange={this.searchHandler} />
+        <ul>
+          {' '}
+          {this.state.displayedContacts.map(friend => {
+            return (
+              <Contact
+                key={friend.username}
+                user={friend}
+                addUser={this.addNominee}
+                removeUser={this.removeNominee}
+                checked={nomineeList.indexOf(friend) !== -1}
+              />
+            )
+          })}
+        </ul>
+
+        <NomineeList onDelete={this.removeNominee} />
+
+        <span>{'Press Next to skip this step'}</span>
+
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-  postIt: state.Post.postIt,
+  friendsList: state.Friend.friendsList,
+  postIt: state.Post.postIt
 })
 
-export default connect(mapStateToProps)(PrivacyChoices)
+export default connect(mapStateToProps)(Nomination);

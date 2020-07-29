@@ -14,6 +14,7 @@ export default {
   group: null,
   privacyType: 'FRIENDS',
   activeStep: 0,
+  nomineeList: []
   // isDraft: false
 
 }

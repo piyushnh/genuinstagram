@@ -188,7 +188,6 @@ export const  addPost = (postData) => {
    return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
     // console.log()
-    console.log(postData)
     const payLoad = new FormData();
 
     payLoad.set('image', postData.targetFile);
@@ -196,6 +195,7 @@ export const  addPost = (postData) => {
     payLoad.set('location', postData.location);
     payLoad.set('privacyType', postData.privacyType);
     payLoad.set('isDraft', postData.isDraft);
+    payLoad.set('nomineeList', JSON.stringify(postData.nomineeList));
 
 
     return postService.addPost(payLoad).then((result) => {
@@ -212,6 +212,8 @@ export const  addPost = (postData) => {
           value: 'Saved to drafts'
         })
         }
+
+        dispatch(resetPostIt())
 
       }
       else {

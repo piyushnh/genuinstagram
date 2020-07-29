@@ -77,7 +77,7 @@ class Share extends Component {
 
 Share.propTypes = {
   post: PropTypes.number.isRequired,
-  postOwner: PropTypes.number.isRequired,
+  postOwner: PropTypes.object.isRequired,
   back: PropTypes.func.isRequired,
   incrementShares: PropTypes.func.isRequired,
   decrementShares: PropTypes.func.isRequired,

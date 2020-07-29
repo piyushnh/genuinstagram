@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,6 +25,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import YoutubeSearchedForIcon from '@material-ui/icons/YoutubeSearchedFor'
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import { dispatchHelper } from '../../../../../utils/utils'
 const useStyles = makeStyles(theme => ({
   root: {
     boxShadow: 'none',
@@ -54,6 +56,10 @@ const Bottombar = props => {
   const [notifications] = useState([])
   const [value, setValue] = React.useState(0)
 
+  const addPost = () => {
+    props.dispatch(push('/add-post/'))
+  }
+
   return (
     <BottomNavigation
       value={value}
@@ -76,6 +82,7 @@ const Bottombar = props => {
       <BottomNavigationAction
         className={classes.name}
         icon={<AddCircleRoundedIcon />}
+        onClick={addPost}
       />
       <BottomNavigationAction
         className={classes.name}
@@ -97,4 +104,4 @@ Bottombar.propTypes = {
   onSidebarOpen: PropTypes.func,
 }
 
-export default Bottombar
+export default connect()(Bottombar)

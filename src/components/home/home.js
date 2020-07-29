@@ -5,8 +5,7 @@ import Title from '../others/title'
 import { getUnreadNotifications } from '../../store/actions/notification'
 import { connect } from 'react-redux'
 import { getTimeline } from '../../store/actions/post'
-import { getCurrentProfile } from '../../store/actions/user'
-import { fetchFriendList } from '../../store/actions/friend'
+
 import Suggested from '../others/suggested/suggested'
 import CreateGroup from '../group/create-group/create-group'
 import PostItTeaser from '../post/post-it/post-it-teaser'
@@ -22,8 +21,7 @@ class Home extends Component {
   componentDidMount = () => {
     let { dispatch } = this.props
 
-    dispatch(getCurrentProfile())
-    dispatch(fetchFriendList())
+    
 
     // dispatch(getUnreadNotifications())
     // dispatch(getUnreadMessages())

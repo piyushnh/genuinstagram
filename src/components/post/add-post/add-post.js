@@ -11,7 +11,7 @@ import Notify from 'handy-notification'
 import Container from '@material-ui/core/Container';
 import PostItMiddle from './middle'
 import PrivacyChoices from './privacyChoices'
-import { history } from '../../../store/store'
+import Nomination from './nomination'
 
 
 
@@ -48,6 +48,7 @@ class AddPost extends Component {
       group,
       tags,
       privacyType,
+      nomineeList
       // isDraft
       // group_name
     } =  this.props.postIt
@@ -62,6 +63,7 @@ class AddPost extends Component {
       group,
       tags,
       privacyType,
+      nomineeList,
       isDraft: false
       
     }))
@@ -82,6 +84,7 @@ class AddPost extends Component {
       type,
       group,
       tags,
+      nomineeList,
       privacyType,
     } =  this.props.postIt
 // Object.assign({}, props.postIt, group_name)
@@ -96,6 +99,7 @@ class AddPost extends Component {
       group,
       tags,
       privacyType,
+      nomineeList,
       isDraft: true
       // group_name
     }))
@@ -139,8 +143,11 @@ class AddPost extends Component {
         <Title value="Add Post" />
         {
           (activeStep === 0 || activeStep === 1) ? 
-          <PostItMiddle activeStep={activeStep} /> : 
+          <PostItMiddle activeStep={activeStep} /> : (
+            activeStep === 2 ?   <Nomination />:
           <PrivacyChoices activeStep={activeStep} />
+
+          )
         }
 
 
