@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './flist.scss'
+// import './flist.scss'
 import MaterialIcon from '../../../others/icons/material-icon'
 // import ShareButton from './share-button'
 
