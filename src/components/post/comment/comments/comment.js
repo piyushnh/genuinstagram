@@ -76,7 +76,7 @@ Comment.propTypes = {
   comment_by: PropTypes.object.isRequired,
   comment_by_username: PropTypes.string,
   comment_time: PropTypes.string.isRequired,
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   commentSrc: PropTypes.string,
   text: PropTypes.string,
   comment_type: PropTypes.oneOf(['text', 'sticker', 'image']),

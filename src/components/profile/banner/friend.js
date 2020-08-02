@@ -71,7 +71,9 @@ const BannerFriend = ({ ud,  dispatch }) => {
       agreeFunction: () => {loadAction( 'CANCEL_REQUEST')}
     })
   }
-  const acceptFriendRequest = () => {}
+  const acceptFriendRequest = () => {
+    loadAction('ACCEPT_REQUEST')
+  }
   const deleteFriendship = () => {
     setOpen(true)
     setDialogData({

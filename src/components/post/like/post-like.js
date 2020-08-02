@@ -119,7 +119,7 @@ export default class PostLike extends Component {
 
 PostLike.propTypes = {
   postDetails: PropTypes.shape({
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     // user: PropTypes.number.isRequired,
   }).isRequired,
   incrementWhat: PropTypes.func.isRequired,

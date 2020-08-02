@@ -68,7 +68,7 @@ export default class PostImage extends Component {
 
 PostImage.propTypes = {
   postDetails: PropTypes.shape({
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     post_time: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

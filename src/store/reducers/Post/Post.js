@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       break
 
     case 'GET_FEED':
-      return { ...state, feed: py }
+      return { ...state, feed: methods.addFeed(state.feed, py) }
       break
 
     case 'GET_GROUP_POSTS':

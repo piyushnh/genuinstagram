@@ -72,7 +72,7 @@ class DeletePostOption extends Component {
 DeletePostOption.propTypes = {
   postDetails: PropTypes.shape({
     // user: PropTypes.number.isRequired,
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     when: PropTypes.string.isRequired,
   }).isRequired,
   toggleOptions: PropTypes.func.isRequired,

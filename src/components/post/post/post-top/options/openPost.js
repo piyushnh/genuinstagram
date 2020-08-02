@@ -14,7 +14,7 @@ const OpenPost = ({ when, post_id }) => (
 
 OpenPost.propTypes = {
   when: PropTypes.string.isRequired,
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
 }
 
 export default OpenPost

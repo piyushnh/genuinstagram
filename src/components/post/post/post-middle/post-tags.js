@@ -47,6 +47,6 @@ export default class PostTags extends Component {
 }
 
 PostTags.propTypes = {
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   tags_count: PropTypes.number.isRequired,
 }

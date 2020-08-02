@@ -12,4 +12,8 @@ export default {
   showOverlay: false,
   type: '',
   group: null,
+  privacyType: 'FRIENDS',
+  activeStep: 0,
+  // isDraft: false
+
 }

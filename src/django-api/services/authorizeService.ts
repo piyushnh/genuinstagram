@@ -100,5 +100,29 @@ export class AuthorizeService {
 
   }
 
+  logout = async () => {
+
+    try {
+      const result = await this.httpService.postWithAuth(`auth/logout/`, {})
+      if (result.status === 200) {
+        return {
+          success: true,
+        }
+      }
+      else {
+        return {
+          mssg: 'Unable to logout',
+          success: false,
+          data: null
+        }
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
 
 }

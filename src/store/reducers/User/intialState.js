@@ -31,6 +31,7 @@ export default {
     id: null,
     username: '',
     firstname: '',
+    profile_picture: '',
     surname: '',
     email: '',
     bio: '',

@@ -57,7 +57,7 @@ export default class Post extends Component {
 }
 
 Post.propTypes = {
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,

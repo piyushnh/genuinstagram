@@ -119,6 +119,8 @@ export const  unfollowUser = (username) => {
       })
   }
 }
+
+
 export const  friendActions = (username, actionType) => {
    return (dispatch, getState) => {
    
@@ -158,6 +160,28 @@ export const  friendActions = (username, actionType) => {
         Notify({
           value: 'Something went wrong'
         })
+      })
+  }
+}
+export const  fetchFriendList = () => {
+   return (dispatch, getState) => {
+   
+
+      
+    return friendService.getFriendsList().then((result) => {
+      // Send email verification successful.
+      if (result.success)
+      {
+         dispatch({type:'GET_FRIENDS_LIST', payload: result.data})
+         
+      }
+     
+     
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+       
       })
   }
 }

@@ -28,6 +28,30 @@ export class FriendService {
   }
   @inject(SocialProviderTypes.HttpService) httpService
 
+  getFriendsList = async () => {
+
+    try {
+      const result = await this.httpService.getWithAuth(`friendship/getFriendsList/`)
+      if (result.status === 200) {
+        return {
+          success: true,
+          data: result.data
+        }
+      }
+      else {
+        return {
+          mssg: 'Sorry! Unable to fetch friends list',
+          success: false,
+          data: null
+        }
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
   followUser = async (userName) => {
 
     try {

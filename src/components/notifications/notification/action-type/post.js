@@ -7,7 +7,7 @@ const NotificationTypePost = ({ post_id }) => (
 )
 
 NotificationTypePost.propTypes = {
-  post_id:PropTypes.string.isRequired,
+  post_id:PropTypes.number.isRequired,
 }
 
 export default NotificationTypePost

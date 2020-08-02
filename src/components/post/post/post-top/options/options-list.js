@@ -35,7 +35,7 @@ const PostOptionLists = ({ postDetails, toggleOptions, updateDescription }) => {
 
 PostOptionLists.propTypes = {
   postDetails: PropTypes.shape({
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     // user: PropTypes.number.isRequired,
     when: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

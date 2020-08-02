@@ -17,7 +17,7 @@ const PostTop = ({ postDetails, updateDescription }) => (
 
 PostTop.propTypes = {
   postDetails: PropTypes.shape({
-    post_id:PropTypes.string.isRequired,
+    post_id:PropTypes.number.isRequired,
     group_id: PropTypes.number,
     type: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,

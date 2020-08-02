@@ -24,11 +24,12 @@ import AdminLogin from '../components/admin/admin-login'
 import IsAdmin from '../components/admin/is-admin'
 import Error from '../components/error/error'
 import Login from '../components/authentication/login'
-import {
-  Main as MainLayout,
-  Minimal as MinimalLayout,
-} from '../components/layouts'
+
 import TaskList from '../components/task/task-list'
+
+import AddPost from '../components/post/add-post/add-post'
+import { Main as MainLayout, Minimal as MinimalLayout } from "../components/layouts";
+
 
 // const Profile = Loadable({
 //   loader: () => import('../components/profile/profile'),
@@ -97,6 +98,7 @@ import TaskList from '../components/task/task-list'
 
 const AppRoutes = () => (
   <div className="badshah">
+<<<<<<< HEAD
     <ThemeProvider theme={theme}>
       <Switch>
         <PrivateRoute path="/" exact component={Home} layout={MainLayout} />
@@ -164,6 +166,34 @@ const AppRoutes = () => (
         <PrivateRoute path="/task" component={TaskList} layout={MainLayout} />
         <PublicRoute path="/react-login" component={Login} />
       </Switch>
+=======
+  <ThemeProvider theme={theme}>
+
+    <Switch>
+
+        <PrivateRoute path="/" exact component={Home} layout={MainLayout}/>
+        <PrivateRoute path="/profile/:username" component={Profile} layout={MainLayout}/>
+        <PrivateRoute path="/error/:what" component={Error} layout={MainLayout}/>
+        <PrivateRoute path="/email-verification/:is" component={EmailVerification} layout={MainLayout}/>
+        <PrivateRoute path="/notifications" component={Notifications} layout={MainLayout}/>
+        <PrivateRoute path="/add-post" component={AddPost} layout={MainLayout}/>
+        <PrivateRoute path="/edit-profile" component={EditProfile} layout={MainLayout}/>
+        <PrivateRoute path="/post/:post_id" component={ViewPost} layout={MainLayout}/>
+        <PrivateRoute path="/explore" component={Explore} layout={MainLayout}/>
+        <PrivateRoute path="/settings" component={Settings} layout={MainLayout}/>
+        <PrivateRoute path="/group/:grp_id" component={Group} layout={MainLayout}/>
+        <PrivateRoute path="/messages" component={Messages} layout={MainLayout}/>
+        <PrivateRoute path="/hashtag/:hashtag" component={Hashtag} layout={MainLayout}/>
+        <PrivateRoute path="/admin-login" component={AdminLogin} layout={MainLayout}/>
+        <PrivateRoute path="/is-admin" component={IsAdmin} layout={MainLayout}/>
+
+      <PublicRoute path="/react-login" component={Login} />
+
+
+
+    </Switch>
+
+>>>>>>> 36f80639ff2cc2f8579e19501096a3aad4ec604e
     </ThemeProvider>
   </div>
 )

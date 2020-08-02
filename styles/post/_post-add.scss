@@ -1,0 +1,52 @@
+// POST IT
+.add_post{
+  left: 20%;
+  margin-bottom: 2em;
+
+  & .stepper{
+      margin-bottom: 3em;
+  }
+ 
+
+
+
+  & .middle{
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    & textarea{
+      width: 92%;
+      height: 66px !important;
+      font-size: 14px;
+      word-break: break-word;
+      padding: 7px;
+      border: 1px solid $ff;
+      border-radius: 2px;
+      margin-left: 7px;
+    }
+
+    & .post_image{
+      margin-top: 10px;
+      height: 200px;
+
+      & img{
+        position: relative;
+        left: 10px;
+        max-height: 200px;
+        max-width: 380px;
+      }
+    }
+
+    & label {
+      position: relative;
+      top: 140px;
+      left: 126px;
+      padding: 6px 18px;
+      font-size: 14px;
+    }
+
+  }
+
+  
+
+}
