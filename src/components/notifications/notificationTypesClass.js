@@ -2,6 +2,7 @@ import { push } from 'connected-react-router'
 import { store } from '../../store/store'
 
 var dispatch = store.dispatch
+
 class Notification {
   constructor(notif) {
     this.activities = notif.activities

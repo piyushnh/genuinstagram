@@ -4,7 +4,6 @@ import { provider } from '../../django-api/socialEngine'
 import Notify from 'handy-notification'
 import { push } from 'connected-react-router'
 
-
 const postService = provider.get(SocialProviderTypes.PostService)
 
 export const getUserPosts = username =>
@@ -44,8 +43,6 @@ export const addGroupPost = post => {
 export const getGroupPhotos = group =>
   dispatchHelper('GET_GROUP_PHOTOS', 'get-group-photos', { group })
 
-
-
 export const editPost = post_details => {
   return {
     type: 'EDIT_POST',
@@ -60,7 +57,7 @@ export const deletePost = post => {
   }
 }
 
-export const getFeed = (feed) => {
+export const getFeed = feed => {
   return {
     type: 'GET_FEED',
     payload: feed,
@@ -138,99 +135,84 @@ export const resetPostIt = () => {
   }
 }
 
-
 export const getTimeline = () => {
-   return (dispatch, getState) => {
+  return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
 
     let feed = getState().Post.feed
-    let {lastItemId, pageSize} = feed
+    let { lastItemId, pageSize } = feed
 
-    return postService.getTimeline(lastItemId, pageSize).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        
-        const data = result.data
-        const {timeline, hasMore, lastItemId} = data
-        let feedList = []
-        
-        for (const index in timeline){
-          let activity = timeline[index]
-          feedList.push(activity.post)
+    return postService
+      .getTimeline(lastItemId, pageSize)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          const data = result.data
+          const { timeline, hasMore, lastItemId } = data
+          let feedList = []
+
+          for (const index in timeline) {
+            let activity = timeline[index]
+            feedList.push(activity.post)
+          }
+
+          dispatch(getFeed({ feedList, hasMore, lastItemId }))
+          // dispatch(push('/'))
+        } else {
+          Notify({
+            value: result.mssg,
+          })
         }
-
-    
-
-        dispatch(getFeed({ feedList, hasMore,  lastItemId }))
-        // dispatch(push('/'))
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
-
-
       })
   }
 }
 
-export const  addPost = (postData) => {
-   return (dispatch, getState) => {
+export const addPost = postData => {
+  return (dispatch, getState) => {
     // dispatch(globalActions.showNotificationRequest())
     // console.log()
-    const payLoad = new FormData();
+    const payLoad = new FormData()
 
-    payLoad.set('image', postData.targetFile);
-    payLoad.set('description', postData.desc);
-    payLoad.set('location', postData.location);
-    payLoad.set('privacyType', postData.privacyType);
-    payLoad.set('isDraft', postData.isDraft);
-    payLoad.set('nomineeList', JSON.stringify(postData.nomineeList));
+    payLoad.set('image', postData.targetFile)
+    payLoad.set('description', postData.desc)
+    payLoad.set('location', postData.location)
+    payLoad.set('privacyType', postData.privacyType)
+    payLoad.set('isDraft', postData.isDraft)
+    payLoad.set('nomineeList', JSON.stringify(postData.nomineeList))
 
+    return postService
+      .addPost(payLoad)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          if (!postData.isDraft) {
+            dispatch(push(`/post/${result.data.post_id}`))
+          } else {
+            Notify({
+              value: 'Saved to drafts',
+            })
+          }
 
-    return postService.addPost(payLoad).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-       
-        if (!postData.isDraft){
-          dispatch(push(`/post/${result.data.post_id}`))
-
-        }
-        else{
+          dispatch(resetPostIt())
+        } else {
           Notify({
-          value: 'Saved to drafts'
-        })
+            value: result.mssg,
+          })
         }
-
-        dispatch(resetPostIt())
-
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
-
-
       })
   }
 }
@@ -238,110 +220,88 @@ export const  addPost = (postData) => {
 // export const getPost = post_id =>
 //   dispatchHelper('GET_POST', 'get-post', { post_id })
 
+export const getPost = postId => {
+  return (dispatch, getState) => {
+    return postService
+      .getPost(postId)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          const postData = result.data
 
-export const  getPost = (postId) => {
-   return (dispatch, getState) => {
-   
-    return postService.getPost(postId).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        
-        const postData = result.data;
-
-
-         dispatch({ type: 'GET_POST' , payload: postData })
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+          dispatch({ type: 'GET_POST', payload: postData })
+        } else {
+          Notify({
+            value: result.mssg,
+          })
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
       })
   }
 }
 
-export const  addComment = (postId, text) => {
-   return (dispatch, getState) => {
-   
-    return postService.addComment(postId, text).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        
-        const commentData = result.data;
+export const addComment = (postId, text) => {
+  return (dispatch, getState) => {
+    return postService
+      .addComment(postId, text)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          const commentData = result.data
 
+          //  dispatch({ type: 'GET_POST' , payload: postData })
 
-        //  dispatch({ type: 'GET_POST' , payload: postData })
+          return { success: true, comment: commentData }
+        } else {
+          Notify({
+            value: result.mssg,
+          })
 
-         return {success: true, comment: commentData}
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-
-         return {success: false, comment: null}
-
-      }
-     
-    })
-      .catch((error) => {
+          return { success: false, comment: null }
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
 
-         return {success: false, comment: null}
-
-
-
+        return { success: false, comment: null }
       })
   }
 }
 
-export const  toggleBookmark = (postId, isBookmarked) => {
-   return (dispatch, getState) => {
-   
-    return postService.toggleBookmark(postId, isBookmarked).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        return true     
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
+export const toggleBookmark = (postId, isBookmarked) => {
+  return (dispatch, getState) => {
+    return postService
+      .toggleBookmark(postId, isBookmarked)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          return true
+        } else {
+          Notify({
+            value: result.mssg,
+          })
 
-         return false
-
-      }
-     
-    })
-      .catch((error) => {
+          return false
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
 
-         return false
-
-
-
+        return false
       })
   }
 }
-
-
-
