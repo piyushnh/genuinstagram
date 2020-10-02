@@ -1,6 +1,5 @@
 import { SocialProviderTypes } from '../socialProviderTypes';
 import { injectable, inject } from 'inversify'
-import { firebaseAuth } from '../firebaseConfig'
 
 // import { provider } from '../socialEngine'
 
@@ -15,8 +14,6 @@ import { firebaseAuth } from '../firebaseConfig'
  * @implements {IAuthorizeService}
  */
 
-var GoogleProvider = new firebaseAuth.GoogleAuthProvider()
-GoogleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly')
 
 @injectable()
 export class UserService {

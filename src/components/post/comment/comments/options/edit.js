@@ -50,7 +50,7 @@ export default class EditCommentOption extends Component {
 
 EditCommentOption.propTypes = {
   commentDetails: PropTypes.shape({
-    comment_id: PropTypes.string.isRequired,
+    comment_id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
   }).isRequired,

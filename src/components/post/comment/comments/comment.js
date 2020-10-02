@@ -72,7 +72,7 @@ export default class Comment extends Component {
 }
 
 Comment.propTypes = {
-  comment_id: PropTypes.string.isRequired,
+  comment_id: PropTypes.number.isRequired,
   comment_by: PropTypes.object.isRequired,
   comment_by_username: PropTypes.string,
   comment_time: PropTypes.string.isRequired,

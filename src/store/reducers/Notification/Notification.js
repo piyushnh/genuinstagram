@@ -2,6 +2,7 @@
 /* eslint no-unreachable:0 */
 
 import initialState from './initialState'
+import * as methods from './methods'
 
 export default (state = initialState, action) => {
   let py = action.payload
@@ -21,6 +22,14 @@ export default (state = initialState, action) => {
 
     case 'READ_NOTIFICATIONS':
       return { ...state, unreadNotifications: 0 }
+      break
+
+    case 'ADD_TO_NOTIFICATIONS':
+      return { ...state, notifications: methods.addNotification(state.notifications, py) }
+      break
+
+    case 'SET_FCM_TOKEN':
+      return { ...state, fcm_token: py }
       break
   }
 

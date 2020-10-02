@@ -14,17 +14,30 @@ import {store, history} from './store/store'
 import {persistor} from './store/store'
 import {PersistGate} from 'redux-persist/integration/react'
 import Loading from './components/others/loading'
-import App from './components/App'
-import Approutes from './routes/MainRoutes'
+import App from './components/main/App'
 import './django-api/socialEngine'
 import '../styles/styles.scss'
-
 
 import JavascriptTimeAgo from 'javascript-time-ago'
 
 import en from 'javascript-time-ago/locale/en'
 
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("firebase-messaging-sw.js")
+    .then(function(registration) {
+      console.log("Registration successful, scope is:", registration.scope);
+    })
+    .catch(function(err) {
+      console.log("Service worker registration failed, error:", err);
+    });
+}
+
+// import initializePush from './firebase/initializeNotifications'
+
+
 JavascriptTimeAgo.addLocale(en)
+// initializePush()
 
 let element = document.getElementById('root')
 if (element) {

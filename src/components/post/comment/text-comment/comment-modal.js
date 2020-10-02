@@ -102,7 +102,7 @@ export default class TextCommentModal extends Component {
 }
 
 TextCommentModal.propTypes = {
-  post: string.isRequired,
+  post: number.isRequired,
   postOwner: PropTypes.object.isRequired,
   back: func.isRequired,
   incrementComments: func.isRequired,

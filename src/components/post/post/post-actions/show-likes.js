@@ -35,6 +35,6 @@ export default class ShowLikes extends Component {
 ShowLikes.propTypes = {
   likes_count: number.isRequired,
   decrementLikes: func.isRequired,
-  post_id: number.isRequired
+  post_id: string.isRequired
 
 }

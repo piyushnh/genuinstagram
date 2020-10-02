@@ -33,7 +33,7 @@ export default class PostImage extends Component {
             
 
             <img
-              src={image}
+              src={`http://localhost:8000${image}`}
               className={classNames('p_img', filter)}
               onClick={() => this._toggle('showImage')}
             />

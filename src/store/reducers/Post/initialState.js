@@ -8,7 +8,7 @@ export default {
   // shared: [],
   // photos: [],
   feed: PaginateInitialState,
-  // viewPost: {},
+  viewPost: {},
   // likes: [],
   // tags: [],
   // posted: false,

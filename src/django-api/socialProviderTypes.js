@@ -10,5 +10,6 @@ export const SocialProviderTypes = {
   PostService: 'PostService',
   UserService: 'UserService',
   FriendService: 'FriendService',
+  NotificationService: 'NotificationService',
 
 }

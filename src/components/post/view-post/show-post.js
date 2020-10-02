@@ -15,7 +15,7 @@ const ShowPost = ({ post }) => {
           <End />
         </Fragment>
       ) : (
-        <Nothing mssg="No such post found!!" />
+        <Nothing mssg="Please wait while we load your post!" />
       )}
     </Fragment>
   )

@@ -14,25 +14,35 @@ import ShowPost from './show-post'
 import { cLoading } from '../../../utils/utils'
 
 class ViewPost extends Component {
-  state = {
+
+  constructor(props){
+    super(props)
+    this.state = {
     loading: true,
   }
+    
+  }
+
 
   componentDidMount = () => {
-    console.log(this.props)
-    let {
+  
+    // dispatch(getUnreadNotifications())
+    // dispatch(getUnreadMessages())
+  let {
       match: {
         params: { post_id },
       },
       dispatch,
     } = this.props
-    post_id ? dispatch(getPost(post_id)) : null
-    // dispatch(getUnreadNotifications())
-    // dispatch(getUnreadMessages())
 
-    if (this.props.post !== '') {
+    post_id ? dispatch(getPost(post_id)) : null
+    if (this.props.post !== {}) {
       this.setState({ loading: false })
     }
+  }
+
+  componentWillUnmount(){
+    this.props.dispatch({type:'GET_POST', payload: {}})
   }
 
   // componentWillReceiveProps = () => this.setState({ loading: false })
@@ -48,16 +58,16 @@ class ViewPost extends Component {
           <div className="senapati view_senapati">
             <div className="prajkumar">
               <IsLoading loading={loading} />
-
               <div className={cLoading(loading)}>
                 <ShowPost />
               </div>
+              
             </div>
 
-            <div className="srajkumar">
+            {/*<div className="srajkumar">
               <Suggested />
               <CreateGroup />
-            </div>
+            </div>*/}
           </div>
         </FadeIn>
       </div>

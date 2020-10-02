@@ -1,6 +1,6 @@
 export default {
   list: [],
-  lastItemId: null,
+  lastItemId: 'null',
   pageSize: 3,
   hasMore: false
 }

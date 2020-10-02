@@ -62,7 +62,7 @@ class DeleteCommentOption extends Component {
 
 DeleteCommentOption.propTypes = {
   commentDetails: PropTypes.shape({
-    comment_id: PropTypes.string.isRequired,
+    comment_id: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     commentSrc: PropTypes.string.isRequired,
   }).isRequired,

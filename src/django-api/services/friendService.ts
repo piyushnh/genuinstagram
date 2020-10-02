@@ -1,6 +1,5 @@
 import { SocialProviderTypes } from '../socialProviderTypes';
 import { injectable, inject } from 'inversify'
-import { firebaseAuth } from '../firebaseConfig'
 
 // import { provider } from '../socialEngine'
 
@@ -15,8 +14,7 @@ import { firebaseAuth } from '../firebaseConfig'
  * @implements {IAuthorizeService}
  */
 
-var GoogleProvider = new firebaseAuth.GoogleAuthProvider()
-GoogleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly')
+
 
 @injectable()
 export class FriendService {
@@ -41,6 +39,30 @@ export class FriendService {
       else {
         return {
           mssg: 'Sorry! Unable to fetch friends list',
+          success: false,
+          data: null
+        }
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+  getFriendRequests = async () => {
+
+    try {
+      const result = await this.httpService.getWithAuth(`friendship/getFriendRequestsList/`)
+      if (result.status === 200) {
+        return {
+          success: true,
+          data: result.data
+        }
+      }
+      else {
+        return {
+          mssg: 'Sorry! Unable to fetch friend requests list',
           success: false,
           data: null
         }

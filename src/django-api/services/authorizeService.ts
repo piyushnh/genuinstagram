@@ -1,6 +1,6 @@
 import { SocialProviderTypes } from '../socialProviderTypes';
 import { injectable, inject } from 'inversify'
-import { firebaseAuth } from '../firebaseConfig'
+import { firebaseAuth } from '../../firebase/firebaseConfig'
 
 // import { provider } from '../socialEngine'
 
@@ -100,10 +100,10 @@ export class AuthorizeService {
 
   }
 
-  logout = async () => {
+  logout = async (fcmToken) => {
 
     try {
-      const result = await this.httpService.postWithAuth(`auth/logout/`, {})
+      const result = await this.httpService.postWithAuth(`auth/logout/`, { fcmToken: fcmToken })
       if (result.status === 200) {
         return {
           success: true,

@@ -4,10 +4,7 @@ import { provider } from '../../django-api/socialEngine'
 import Notify from 'handy-notification'
 import { push } from 'connected-react-router'
 
-
 const friendService = provider.get(SocialProviderTypes.FriendService)
-
-
 
 export const toggleIsFollowing = f => {
   return {
@@ -67,132 +64,134 @@ export const removeRecommendation = recommend_id => {
   }
 }
 
-export const  followUser = (username) => {
-   return (dispatch, getState) => {
-   
-    return friendService.followUser(username).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        
-         dispatch(toggleIsFollowing(true))
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+export const followUser = username => {
+  return (dispatch, getState) => {
+    return friendService
+      .followUser(username)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          dispatch(toggleIsFollowing(true))
+        } else {
+          Notify({
+            value: result.mssg,
+          })
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
       })
   }
 }
-export const  unfollowUser = (username) => {
-   return (dispatch, getState) => {
-   
-    return friendService.unfollowUser(username).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-        
-         dispatch(toggleIsFollowing(false))
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+export const unfollowUser = username => {
+  return (dispatch, getState) => {
+    return friendService
+      .unfollowUser(username)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          dispatch(toggleIsFollowing(false))
+        } else {
+          Notify({
+            value: result.mssg,
+          })
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
       })
   }
 }
 
+export const friendActions = (username, actionType) => {
+  return (dispatch, getState) => {
+    return friendService
+      .friendActions(username, actionType)
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          switch (actionType) {
+            case 'SEND_REQUEST':
+              dispatch(changeFriendshipStatus('REQUEST_SENT'))
+              break
+            case 'ACCEPT_REQUEST':
+              dispatch(changeFriendshipStatus('ARE_FRIENDS'))
+              break
+            case 'CANCEL_REQUEST':
+              dispatch(changeFriendshipStatus('NONE'))
+              break
+            case 'REJECT_REQUEST':
+              url = ''
+              break
+            case 'REMOVE_FRIEND':
+              dispatch(changeFriendshipStatus('NONE'))
+              break
 
-export const  friendActions = (username, actionType) => {
-   return (dispatch, getState) => {
-   
-
-      
-    return friendService.friendActions(username, actionType).then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-         switch (actionType) {
-
-      case "SEND_REQUEST": dispatch(changeFriendshipStatus('REQUEST_SENT'))
-        break;
-      case "ACCEPT_REQUEST": dispatch(changeFriendshipStatus('ARE_FRIENDS'))
-        break;
-      case "CANCEL_REQUEST": dispatch(changeFriendshipStatus('NONE'))
-        break;
-      case "REJECT_REQUEST": url = ''
-        break;
-      case "REMOVE_FRIEND": dispatch(changeFriendshipStatus('NONE'))
-        break;
-
-      // default:      return <h1>No project match</h1>
-    }
-         
-      }
-      else {
-        Notify({
-          value: result.mssg
-        })
-      }
-     
-    })
-      .catch((error) => {
+            // default:      return <h1>No project match</h1>
+          }
+        } else {
+          Notify({
+            value: result.mssg,
+          })
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
         Notify({
-          value: 'Something went wrong'
+          value: 'Something went wrong',
         })
       })
   }
 }
-export const  fetchFriendList = () => {
-   return (dispatch, getState) => {
-   
-
-      
-    return friendService.getFriendsList().then((result) => {
-      // Send email verification successful.
-      if (result.success)
-      {
-         dispatch({type:'GET_FRIENDS_LIST', payload: result.data})
-         
-      }
-     
-     
-    })
-      .catch((error) => {
+export const fetchFriendList = () => {
+  return (dispatch, getState) => {
+    return friendService
+      .getFriendsList()
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          dispatch({ type: 'GET_FRIENDS_LIST', payload: result.data })
+        }
+      })
+      .catch(error => {
         // An error happened.
         console.log(error)
-       
+      })
+  }
+}
+export const fetchFriendRequests = () => {
+  return (dispatch, getState) => {
+    return friendService
+      .getFriendRequests()
+      .then(result => {
+        // Send email verification successful.
+        if (result.success) {
+          dispatch({ type: 'GET_FRIENDREQUESTS_LIST', payload: result.data })
+        }
+      })
+      .catch(error => {
+        // An error happened.
+        console.log(error)
       })
   }
 }
 // export const  unfriendUser = (username) => {
 //    return (dispatch, getState) => {
-   
+
 //     return friendService.unfriendUser(username).then((result) => {
 //       // Send email verification successful.
 //       if (result.success)
 //       {
-        
+
 //          dispatch(changeFriendshipStatus('NONE'))
 //       }
 //       else {
@@ -200,7 +199,7 @@ export const  fetchFriendList = () => {
 //           value: result.mssg
 //         })
 //       }
-     
+
 //     })
 //       .catch((error) => {
 //         // An error happened.

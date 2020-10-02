@@ -3,8 +3,9 @@ import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/auth'
 import 'firebase/functions'
-try {
-  let firebaseConfig = {
+import 'firebase/messaging';
+
+  export let firebaseConfig = {
  apiKey: 'AIzaSyD5bPaOO1fukhR4WNMbwyGhWd5D3yjIk3k',
     authDomain: 'journal-dev-253621.firebaseapp.com',
     databaseURL: 'https://journal-dev-253621.firebaseio.com',
@@ -16,12 +17,12 @@ try {
 
 
   
-  firebase.initializeApp(firebaseConfig)
-} catch (error) {
-  console.log('=========Firebase firestore initializer==============')
-  console.log(error)
-  console.log('====================================')
-}
+  // firebase.initializeApp(firebaseConfig)
+// } catch (error) {
+//   console.log('=========Firebase firestore initializer==============')
+//   console.log(error)
+//   console.log('====================================')
+// }
 
 // - Storage reference
 // export let storageRef = firebase.storage().ref()
@@ -34,6 +35,8 @@ try {
 //   db
 // }
 // - Database authorize
+firebase.initializeApp(firebaseConfig);
+export let messaging = firebase.messaging();
 export let firebaseAuth = firebase.auth
 // export let functions = firebase.functions()
 // export let firebaseRef = firebase.database().ref()

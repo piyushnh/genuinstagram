@@ -14,7 +14,6 @@ import storage from 'redux-persist/lib/storage'
 import createEncryptor from 'redux-persist-transform-encrypt'
 import { connectRouter } from 'connected-react-router'
 
-
 // reducers
 import User from './reducers/User/User'
 import Follow from './reducers/Follow/Follow'
@@ -30,47 +29,47 @@ import Authentication from './reducers/Authentication/authentication'
 
 export const history = createBrowserHistory()
 
-const createRootReducer = (history) => combineReducers({
-  Authentication,
-  User,
-  Follow,
-  Notification,
-  Post,
-  Explore,
-  Friend,
-  Group,
-  Message,
-  Setting,
-  Hashtag,
-  router: connectRouter(history),
-})
+const createRootReducer = history =>
+  combineReducers({
+    Authentication,
+    User,
+    Follow,
+    Notification,
+    Post,
+    Explore,
+    Friend,
+    Group,
+    Message,
+    Setting,
+    Hashtag,
+    router: connectRouter(history),
+  })
 
 const encryptor = createEncryptor({
-  secretKey: 'helloiusnci',
   onError: function(error) {
     // Handle the error.
-  }
+  },
 })
 
 const persistConfig = {
   key: 'root',
   storage,
   transforms: [encryptor],
-  whitelist: ['User','Authentication' ],
+  whitelist: ['User', 'Authentication', 'Notification'],
 }
 
 const appReducer = createRootReducer(history)
 
 const rootReducer = (state, action) => {
-    if (action.type === 'LOGOUT') {
-        // for all keys defined in your persistConfig(s)
-        storage.removeItem('persist:root')
-        // storage.removeItem('persist:otherKey')
+  if (action.type === 'LOGOUT') {
+    // for all keys defined in your persistConfig(s)
+    storage.removeItem('persist:root')
+    // storage.removeItem('persist:otherKey')
 
-        state = undefined;
-    }
-    return appReducer(state, action);
-};
+    state = undefined
+  }
+  return appReducer(state, action)
+}
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
