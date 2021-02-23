@@ -7,6 +7,9 @@ class Notification {
   constructor(notif) {
     this.activities = notif.activities
     this.user = this.activities[0].user
+    this.created_at = notif.created_at
+    this.is_seen = notif.is_seen
+    this.is_read = notif.is_read
   }
 
   getPrimaryText() {

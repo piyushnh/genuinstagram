@@ -1,7 +1,7 @@
 /* eslint indent:0 */
 /* eslint no-unreachable:0 */
 
-import initialState from './initialState'
+import { initialState } from './initialState'
 import * as methods from './methods'
 
 export default (state = initialState, action) => {
@@ -25,7 +25,17 @@ export default (state = initialState, action) => {
       break
 
     case 'ADD_TO_NOTIFICATIONS':
-      return { ...state, notifications: methods.addNotification(state.notifications, py) }
+      return {
+        ...state,
+        notifications: methods.addNotification(state.notifications, py),
+      }
+      break
+
+    case 'SET_NOTIFICATIONS':
+      return {
+        ...state,
+        notifications: py,
+      }
       break
 
     case 'SET_FCM_TOKEN':

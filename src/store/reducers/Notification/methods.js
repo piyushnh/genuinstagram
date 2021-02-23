@@ -1,5 +1,7 @@
 export const addNotification = (notifications, payLoad) => {
-
-  notifications.push(payLoad)
-  return notifications
+  let updated = notifications.filter(
+    notif => notif.group !== payLoad.group && !notif.is_seen
+  )
+  updated.push(payLoad)
+  return updated
 }

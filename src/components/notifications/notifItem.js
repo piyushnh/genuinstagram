@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import { connect } from 'react-redux'
+import ReactTimeAgo from 'react-time-ago'
 import { push } from 'connected-react-router'
 import * as notifClasses from './notificationTypesClass'
 import Button from '@material-ui/core/Button'
@@ -83,6 +84,7 @@ function NotificationItem({ notif, dispatch }) {
         primary={notifObject.getPrimaryContent()}
         secondary={notifObject.getSecondaryContent()}
       />
+      <ReactTimeAgo date={notifObject.created_at} />
     </ListItem>
   )
 }

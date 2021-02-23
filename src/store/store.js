@@ -54,7 +54,7 @@ const encryptor = createEncryptor({
 const persistConfig = {
   key: 'root',
   storage,
-  transforms: [encryptor],
+  // transforms: [encryptor],
   whitelist: ['User', 'Authentication', 'Notification'],
 }
 
